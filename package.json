@@ -1,0 +1,22 @@
+{
+  "name": "pdsi-mobilne-kolokwium",
+  "version": "1.0.0",
+  "description": "PDSI-mobilne-kolokwium",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adrian61/PDSI-mobilne-kolokwium.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adrian61/PDSI-mobilne-kolokwium/issues"
+  },
+  "homepage": "https://github.com/adrian61/PDSI-mobilne-kolokwium#readme",
+  "dependencies": {
+    "bootstrap": "^4.4.1"
+  }
+}
