@@ -30,3 +30,16 @@ body {
     height: auto;
     display: block;
 }
+
+.flat-bottom {
+    border-radius: 5px 5px 0px 0px;
+
+}
+.flat {
+    border-radius: 0px 0px 0px 0px;
+}
+
+.flat-top {
+    border-radius:  0px 0px 5px 5px;
+
+}
