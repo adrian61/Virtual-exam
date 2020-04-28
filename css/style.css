@@ -1,3 +1,36 @@
 body {
     background-color: #BBDEFB;
 }
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.center-block {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+}
+
+.top-block {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+}
+
+.text-center {
+    text-align: center
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
