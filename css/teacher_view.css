@@ -17,7 +17,7 @@
    height: 100px;
    color: black;
    font-family: Overlock SC;
-   font-size: 64px;
+   font-size: 60px;
    text-align: center;
 }
 
@@ -71,7 +71,7 @@
 }
 
 
-.task-content-block{
+.task-content{
    margin: 0 auto;
 
    width: 80%;
@@ -85,3 +85,52 @@
    border-radius: 5px;
 }
 
+
+#participants-up-text{
+   margin: 0 auto;
+   margin-top: 40px;
+
+   width: 90%;
+   height: 100px;
+
+   text-align: center;
+   font-size: 60px;
+   font-family: Overlock SC;
+
+   background: #4CAF50;
+   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+   border-radius: 5px;
+}
+
+
+#participants-table{
+   margin: 0 auto;
+   width: 85%;
+
+   box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+   border-radius: 5px;
+}
+
+table {
+   border-collapse: collapse;
+   width: 100%;
+ }
+ 
+ td, th {
+   border: solid #c0c0c0;
+   border-width: thin;
+   font-size: 16px;
+   font-family: Overlock SC;
+   text-align: left;
+   padding: 12px;
+ }
+ 
+ tr:nth-child(even) {
+   background-color: #4CAF50;
+   background-color: #FFFFFF;
+ }
+
+ tr:nth-child(odd) {
+   background-color: #8BC34A;
+   background-color: #FFFFFF;
+   }
