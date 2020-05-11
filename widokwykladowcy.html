@@ -8,6 +8,7 @@
     <title>Mobilne Kolokwium</title>
     <meta name="description" content="Mobilne Kolokwium">
     <meta name="author" content="">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -16,32 +17,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
     <script src="script/script.js"></script>
     <!-- <if twoja przegladarka == chrome to nie zadziala></if> -->
+
+    <link rel="stylesheet" href="css/teacher_view.css">
 </head>
 
 
 <body onload="inherit()">
     <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-lg-2 center-block"><img class="img-responsive" src="images/logo.png"></div>
-            <div class="col-lg-9 center-block text-center"><small class="font-weight-bold display-3">22:11 | Pon, Maj 21
-                    2020</small></div>
-            <div class="col-12 col-sm-auto top-block"><img class="avatar img-responsive" src="images/avatar.png"></div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9"><img class="img-responsive" src="images/tlo.png"></div>
-            <div class="col-lg-3 center-block">
-                <!-- <div class="row center-block">
-                    <button class="btn-lg btn-light flat-bottom" id="first-btn">UTWÓRZ KOLOKWIUM</button>
-                </div>
-                <div class="row ">
-                    <button class="btn-lg btn-success flat">DOŁĄCZ DO KOLOKWIUM</button>
-                </div>
-                <div class="row center-block">
-                    <button class="btn-lg btn-light flat-top" id="last-btn">&nbsp;&nbsp;(ostatnie kolokwium)&nbsp;&nbsp;</button>
-                </div> -->
 
-            </div>
+    	<div class="row">
+
+
+	        <div class="col-lg-9" id="left-side">
+
+
+	        	<div class="row">
+		            <div class="logo" id="logo"><img class="img-responsive" src="images/logo.png"></div>
+		            <div id="exam-name">
+		            	<div id="exam-name-text">Nazwa_kolokwium</div>
+		            </div>
+	            </div>
+
+	            <div class="row">
+	            	<div id="left-panel">
+
+		            	<div class="row">
+							<div class="center-block"id="time-panel-up-text">
+								<span id="clock">21:37</span>
+								<span id="date">Pon, Maj 21 2020</span>
+							</div>
+						</div>						
+						
+						<div class="row horizontal-line"></div>
+
+						<div class="row">
+							<div class="center-block" id="time-panel-middle-text">
+								Link do kolokwium: <span id="link">km.me/zpo-123xfct</span>
+							</div>
+						</div>	
+
+						<div class="row horizontal-line"></div>
+
+						<div class="row">
+		            		<div class="center-block" id="time-panel-down-text">Pozostały czas: <span id="time-left">11:26</span></div>
+		            	</div>
+
+	            	</div>
+				</div>
+				
+
+				<div class="row">
+	            	<div id="left-panel">
+						
+						<span>GR. A</span>
+		            	<div class="row">
+							<div class="task-content-block">
+								Treść zadania
+							</div>
+						</div>							
+					
+						<span>GR. B</span>
+						<div class="row">
+							<div class="task-content-block">
+								Treść zadania
+							</div>
+						</div>	
+
+	            	</div>
+	            </div>
+
+
+	        </div>
+
+
+
+	        <div class="col-lg-9" id="right-side">
+	        </div>
+
         </div>
+
+
     </div>
 </body>
 
