@@ -49,14 +49,32 @@ body {
     border-radius: 5px;
 }
 
+.content-frame {
+  background-color: #FFFFFF;
+  border-radius: 2px;
+}
+
 .user-content-item {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  background-color: #FFFFFF;
-  border-radius: 2px;
+}
+
+.item-title {
+  margin-bottom: -20px;
+  padding-left: 0px;
+}
+
+.item-file {
+  font-style: italic;
+}
+
+.icon {
+  margin-right: 8px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
 }
 
 #user-content {
@@ -64,4 +82,16 @@ body {
   border-radius: 4px;
   margin: 10px;
   padding: 15px;
+}
+
+#task-btn-download {
+  height: inherit;
+}
+
+#task-end {
+  height: 30px;
+}
+
+#timeleft {
+  padding: 18px;
 }
