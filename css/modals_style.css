@@ -32,9 +32,12 @@
    
    margin-top: 15px;
 }
+
+
 .modal-input:hover{
    background: rgb(241, 241, 241);
 }
+
 
 .modal-input:focus{
    outline: none;
@@ -67,7 +70,43 @@
    color: #FFFFFF;
 }
 
+
 .done-button:hover{
    color: #FFFFFF;
    background: #4CAF50;
+}
+
+
+.drag-files{
+   background: rgb(224, 224, 224);
+   height: 110px;
+   border-radius: 10px;
+   margin-top: 10px;
+   position: relative;
+}
+
+
+.vertical-center {
+   position: absolute;              
+   margin: 0;
+   top: 50%;                        
+   transform: translate(0, -50%);
+}  
+
+
+.upload-files-button{
+   position: absolute;              
+   margin: 0;
+   top: 50%; 
+   left: 10%;              
+   transform: translate(-50%, -25%);
+}
+
+
+.group-label{
+   font-family: Roboto;
+   font-size: 20px;
+   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0);
+   margin-left: 5px;
+   margin-top: 5px;
 }
