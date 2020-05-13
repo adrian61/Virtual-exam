@@ -13,7 +13,6 @@
    text-align: center;
 }
 
-
 #left-panel{
    width: 750px;
    height: 320px;
@@ -24,13 +23,11 @@
    font-family: Overlock SC;
 }
 
-
 #time-panel-up-text{
    color: #000000;
    font-size: 45px;
    margin-bottom: 20px;
 }
-
 
 #time-panel-middle-text{
    color: #000000;
@@ -39,18 +36,15 @@
    margin-bottom: 60px;
 }
 
-
 #time-panel-down-text{
    color: #000000;
    font-size: 24px;
    margin-top: 20px;
 }
 
-
 #link{
    color: coral;
 }
-
 
 .horizontal-line
 {
@@ -60,7 +54,6 @@
    width: 90%;
    margin: 0 auto;
 }
-
 
 .task-content{
    margin: 0 auto;
@@ -75,7 +68,6 @@
    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
    border-radius: 5px;
 }
-
 
 #participants-up-text{
    margin: 0 auto;
@@ -93,7 +85,6 @@
    border-radius: 5px;
 }
 
-
 #participants-table{
    margin: 0 auto;
    width: 85%;
@@ -105,7 +96,7 @@
 table {
    border-collapse: collapse;
    width: 100%;
- }
+}
  
  td, th {
    border: solid #c0c0c0;
@@ -114,14 +105,14 @@ table {
    font-family: Overlock SC;
    text-align: left;
    padding: 12px;
- }
+}
  
  tr:nth-child(even) {
    background-color: #4CAF50;
    background-color: #FFFFFF;
- }
+}
 
  tr:nth-child(odd) {
    background-color: #8BC34A;
    background-color: #FFFFFF;
-   }
+}
