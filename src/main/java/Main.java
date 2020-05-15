@@ -12,15 +12,22 @@ public class Main {
         staticFiles.location("/static");
         port(getEnvPort());
 
-        path("/", () -> {
+        path("/", () -> {   // TODO: Website mapping
             get("/", WebsiteMapping::index);
             get("/index", WebsiteMapping::index);
+
         });
 
         path("/api", () -> {
-            before("/*", (req, res) -> logger.info("Received api call: " + req.uri()));
+            path("/exam", () -> {
+                post("/", null);                    // Creating a new exam
+                get("/:examId", null);              // Getting data about an existing exam
+                put("/:examId", null);              // Updating exam
+                delete("/:examId", null);           // Deleting exam
 
-            get("/example", Example::example);  // Example REST API call
+                post("/:examId/student", null);     // Student sends his exam answers
+                get("/:examId/student", null);      // Student gets exam data (not view or answers!)
+            });
         });
     }
 
