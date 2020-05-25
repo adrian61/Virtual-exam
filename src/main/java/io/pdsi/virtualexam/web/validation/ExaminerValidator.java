@@ -28,10 +28,10 @@ public class ExaminerValidator implements Validator {
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
 		if (examiner.getPassword().length() < 8 || examiner.getPassword().length() > 32) {
-			errors.rejectValue("password", "Size.userForm.password");
+			errors.rejectValue("password", "Length", "Password must be at least 8 characters and a maximum of 32 characters");
 		}
 		if (!examiner.getPasswordConfirm().equals(examiner.getPassword())) {
-			errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+			errors.rejectValue("passwordConfirm", "Match", "Password must match.");
 		}
 	}
 }
