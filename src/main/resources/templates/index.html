@@ -1,26 +1,8 @@
-<!doctype html>
-
-<html lang="pl">
-
-<head>
-    <meta charset="utf-8">
-
-    <title>Mobilne Kolokwium</title>
-    <meta name="description" content="Mobilne Kolokwium">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
-    <script src="script/script.js"></script>
-    <!-- <if twoja przegladarka == chrome to nie zadziala></if> -->
-</head>
-
-
-<body onload="inherit()">
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/meta.html"></head>
+<head><title>Mobilne Kolokwium</title></head>
+<body>
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-2 center-block"><img class="img-responsive" src="images/logo.png"></div>
@@ -44,6 +26,6 @@
             </div>
         </div>
     </div>
+    <div th:include="fragments/bootstrap-scripts.html"></div>
 </body>
-
 </html>

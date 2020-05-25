@@ -13,6 +13,26 @@ public class ApplicationController {
 	public String showIndex() {
 		return "index";
 	}
+	//TODO Added for temporary
+	@GetMapping(value = "/examCreatorModal")
+	public String showExamCreatorModal() {
+		return "examCreatorModal";
+	}
+	//TODO Added for temporary
+	@GetMapping(value = "/studentExamView")
+	public String showStudentExamView() {
+		return "studentExamView";
+	}
+	//TODO Added for temporary
+	@GetMapping(value = "/teacherExamListPanel")
+	public String showTeacherExamListPanel() {
+		return "teacherExamListPanel";
+	}
+	//TODO Added for temporary
+	@GetMapping(value = "/teacherPanel")
+	public String showTeacherPanel() {
+		return "teacherPanel";
+	}
 
 //	@GetMapping(value = "/login")
 //	public String loginPage(Model theModel) {
