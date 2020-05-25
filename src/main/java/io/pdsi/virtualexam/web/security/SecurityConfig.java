@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers("/", "/resources/**").permitAll()
 				.and()
-				.formLogin().loginPage("/login").loginProcessingUrl("/auth_user").permitAll()
+				.formLogin().loginPage("/").loginProcessingUrl("/auth_user").permitAll()
 				.and()
 				.exceptionHandling().accessDeniedPage("/access_denied")
 				.and()
