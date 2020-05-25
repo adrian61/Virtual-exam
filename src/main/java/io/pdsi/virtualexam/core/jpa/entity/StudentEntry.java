@@ -1,5 +1,6 @@
 package io.pdsi.virtualexam.core.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,10 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = "student_entry", schema = "public")
 public class StudentEntry extends BaseEntity {
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "exam_id")
-	private Exams exams;
+	private Exam exam;
 
 	@Column(name = "index")
 	private Integer index;
