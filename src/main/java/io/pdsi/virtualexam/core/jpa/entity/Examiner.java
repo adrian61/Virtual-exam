@@ -13,12 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "examiner", schema = "public")
-public class Examiner {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
-
+public class Examiner extends BaseEntity{
 	@Column(name = "first_name")
 	private String firstName;
 
