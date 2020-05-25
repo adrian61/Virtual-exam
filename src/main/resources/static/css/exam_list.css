@@ -1,0 +1,79 @@
+.grey-block{
+    background: #E7E7E7;
+    height: 600px;
+    /* width: 100%; */
+
+    margin-top: 0px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+
+    border-radius: 15px;
+}
+
+#panel-name{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin-left: 40px;
+    margin-top: 25px;
+    width: 70%;
+    height: 100px;
+    color: black;
+    font-family: Overlock SC;
+    font-size: 60px;
+    text-align: center;
+}
+
+#button-create-exam{
+    margin-top: 0px;
+    margin-left: 75%;
+    width: 120px;
+    height: 45px;
+
+    border: none;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 5px 5px 0px 0px;
+
+    font-family: Overlock SC;
+    font-size: 14px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hist-col-name{
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #1A00B8;
+    margin-top: 20px;
+}
+
+.name-field{
+    margin-left: 40px;
+}
+
+.date-field{
+    margin-left: 200px;
+    margin-right: 0px;
+}
+
+.hour-field{
+    margin-left: 0px;
+    margin-right: 200px;
+}
+
+.access-field{
+    margin-left: 0px;
+    margin-right: 100px;   
+}
+
+.exam{
+    background: rgb(241, 241, 241);
+    width: 95%;
+    height: 40px;
+    margin-top: 10px;
+}
