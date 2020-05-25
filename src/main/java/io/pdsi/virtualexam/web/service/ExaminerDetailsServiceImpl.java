@@ -3,7 +3,7 @@ package io.pdsi.virtualexam.web.service;
 
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
 import io.pdsi.virtualexam.core.jpa.repository.ExaminerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +16,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
+@RequiredArgsConstructor
 public class ExaminerDetailsServiceImpl implements UserDetailsService {
-	@Autowired
-	private ExaminerRepository examinerRepository;
+	private final ExaminerRepository examinerRepository;
 
 	@Override
 	@Transactional(readOnly = true)

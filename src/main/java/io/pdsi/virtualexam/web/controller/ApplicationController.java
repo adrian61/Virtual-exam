@@ -22,31 +22,26 @@ public class ApplicationController {
 		model.addAttribute("timestamp", Instant.now());
 		return "index";
 	}
-	@GetMapping(value = "/index")
-	public String showIndex(Model model) {
-		model.addAttribute("standardDate", new Date());
-		model.addAttribute("localDateTime", LocalDateTime.now());
-		model.addAttribute("localDate", LocalDate.now());
-		model.addAttribute("timestamp", Instant.now());
-		return "index";
-	}
 
-	//TODO Added for temporary
+	//TODO Added temporarily
 	@GetMapping(value = "/examCreatorModal")
 	public String showExamCreatorModal() {
 		return "examCreatorModal";
 	}
-	//TODO Added for temporary
+
+	//TODO Added temporarily
 	@GetMapping(value = "/studentExamView")
 	public String showStudentExamView() {
 		return "studentExamView";
 	}
-	//TODO Added for temporary
+
+	//TODO Added temporarily
 	@GetMapping(value = "/teacherExamListPanel")
 	public String showTeacherExamListPanel() {
 		return "teacherExamListPanel";
 	}
-	//TODO Added for temporary
+
+	//TODO Added temporarily
 	@GetMapping(value = "/teacherPanel")
 	public String showTeacherPanel() {
 		return "teacherPanel";
@@ -58,7 +53,7 @@ public class ApplicationController {
 //	}
 
 	@GetMapping(value = "/logout")
-	public String logoutPage(Model theModel) {
+	public String logoutPage() {
 		return "redirect:index";
 	}
 

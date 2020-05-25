@@ -2,16 +2,15 @@ package io.pdsi.virtualexam.web.service;
 
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
 import io.pdsi.virtualexam.core.jpa.repository.ExaminerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ExaminerServiceImpl implements ExaminerService {
-	@Autowired
-	private ExaminerRepository examinerRepository;
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final ExaminerRepository examinerRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public void save(Examiner examiner) {

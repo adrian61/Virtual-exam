@@ -1,5 +1,6 @@
 package io.pdsi.virtualexam.web.security;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -18,12 +19,11 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Qualifier("examinerDetailsServiceImpl")
-	@Autowired
-	private UserDetailsService userDetailsService;
-	@Autowired
-	private DataSource dataSource;
+	private final UserDetailsService userDetailsService;
+	private final DataSource dataSource;
 
 
 	@Override

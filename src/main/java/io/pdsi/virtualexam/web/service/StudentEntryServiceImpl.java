@@ -2,14 +2,15 @@ package io.pdsi.virtualexam.web.service;
 
 import io.pdsi.virtualexam.core.jpa.entity.StudentEntry;
 import io.pdsi.virtualexam.core.jpa.repository.StudentEntryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class StudentEntryServiceImpl implements StudentEntryService {
-	@Autowired
-	StudentEntryRepository studentEntryRepository;
+	private final StudentEntryRepository studentEntryRepository;
 
 	@Override
 	public List<StudentEntry> findAll() {

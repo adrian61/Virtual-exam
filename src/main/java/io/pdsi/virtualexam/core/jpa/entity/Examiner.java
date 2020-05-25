@@ -1,9 +1,6 @@
 package io.pdsi.virtualexam.core.jpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +8,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "examiner", schema = "public")
 public class Examiner extends BaseEntity{
@@ -31,5 +29,4 @@ public class Examiner extends BaseEntity{
 
 	@Transient
 	private String passwordConfirm;
-
 }

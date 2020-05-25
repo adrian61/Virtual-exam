@@ -3,16 +3,16 @@ package io.pdsi.virtualexam.web.controller;
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.web.exception.ExamNotFoundException;
 import io.pdsi.virtualexam.web.service.ExamService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api")
 public class ExamController {
-	@Autowired
-	private ExamService examService;
+	private final ExamService examService;
 
 	@GetMapping("/exam")
 	@CrossOrigin

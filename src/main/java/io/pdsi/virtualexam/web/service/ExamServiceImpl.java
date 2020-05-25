@@ -2,15 +2,15 @@ package io.pdsi.virtualexam.web.service;
 
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.core.jpa.repository.ExamRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ExamServiceImpl implements ExamService {
-	@Autowired
-	private ExamRepository examRepository;
+	private final ExamRepository examRepository;
 
 	@Override
 	public List<Exam> findAll() {
