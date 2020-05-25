@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	@Qualifier("examinerDetailsServiceImpl")
 	@Autowired
 	private UserDetailsService userDetailsService;
 	@Autowired
@@ -28,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("select username as principal, password as credentials, true from \"user\" where username = ?")
-				.authoritiesByUsernameQuery("select username as principal, role as role from \"user\" where username = ?")
+				.usersByUsernameQuery("select login as principal, password as credentials, true from \"examiner\" where login = ?")
+				.authoritiesByUsernameQuery("select login as principal, role as role from \"examiner\" where login = ?")
 				.rolePrefix("ROLE_");
 	}
 
