@@ -1,6 +1,20 @@
 body {
     background-color: #BBDEFB;
+    /*background-color: #c34a8b;*/
+    /*background-color: #af4e4c;*/
 }
+
+.font-main{
+    font-family: Overlock SC, fantasy;
+}
+
+.color1{
+    background-color: #af4e4c;
+}
+.color2{
+    background-color: #4caf50;
+}
+
 
 .main-margin{
   margin-left: 15px;
