@@ -6,8 +6,11 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-2 center-block"><img class="img-responsive" src="images/logo.png"></div>
-            <div class="col-lg-9 center-block text-center"><small class="font-weight-bold display-3">22:11 | Pon, Maj 21
-                    2020</small></div>
+            <div class="col-lg-9 center-block text-center">
+                <small class="font-weight-bold display-3"
+                       th:text="${#dates.format(standardDate, 'HH:mm | MMM dd yyyy')}">
+                </small>
+            </div>
             <div class="col-12 col-sm-auto top-block"><img class="avatar img-responsive" src="images/avatar.png"></div>
         </div>
         <div class="row">
@@ -19,7 +22,7 @@
                 <div class="row ">
                     <button class="btn-lg btn-success flat"><i class="fas fa-user-plus"></i> DOŁĄCZ DO KOLOKWIUM</button>
                 </div>
-                <div class="row center-block">
+                <div class="row center-block" sec:authorize="isAuthenticated()">
                     <button class="btn-lg btn-light flat-top" id="last-btn">10:20 &nbsp;  KOLOKWIUM ZPO</button>
                 </div>
 
