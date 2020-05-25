@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Modal</title>
-
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/modals_style.css">
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-   
-    <link href="https://fonts.googleapis.com/css2?family=Overlock+SC&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/meta.html"></head>
+<head><title>Mobilne Kolokwium</title>
+  <link href="../static/css/modals_style.css" rel="stylesheet" th:href="@{../css/modals_style.css}">
 </head>
-
 
 <body>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
-
-
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content" style="border-radius: 15px;">
-
       <div class="modal-header">
         <div class="center-block" id="modal-title">Utwórz kolokwium</div>
-
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-
       </div>
-      
       <div class="modal-body">
-
         <div class="container">
-
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Nazwa:</label>
@@ -55,7 +31,6 @@
               <input class="modal-input" type="text" placeholder="Nazwa_kolokwium">
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Hasło:</label>
@@ -64,7 +39,6 @@
               <input class="modal-input" type="password" placeholder="-">
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Czas na kolokwium (minuty):</label>
@@ -73,7 +47,6 @@
               <input class="modal-input" type="number" placeholder="60">
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Liczba grup:</label>
@@ -82,8 +55,6 @@
               <input class="modal-input" type="number" placeholder="3">
             </div>
           </div>
-
-          
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Data rozpoczęcia:</label>
@@ -92,7 +63,6 @@
               <input class="modal-input" type="datetime" placeholder="DD/MM/YYYY">
             </div>
           </div>
-
           <div class="row">
             <div class="col-sm">
               <label class="modal-input-label">Czas rozpoczęcia:</label>
@@ -101,9 +71,7 @@
               <input class="modal-input" type="" placeholder="12:00">
             </div>
           </div>
-
           <div id="files-for-groups" style="margin-top: 40px;">
-
             <div class="row drag-files">
               <label class="group-label">Grupa A</label>
               <div class="col-sm">
@@ -115,7 +83,6 @@
                 <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
               </div>
             </div>
-
             <div class="row drag-files">
               <label class="group-label">Grupa B</label>
               <div class="col-sm">
@@ -127,7 +94,6 @@
                 <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
               </div>
             </div>
-
             <div class="row drag-files">
               <label class="group-label">Grupa C</label>
               <div class="col-sm">
@@ -139,24 +105,15 @@
                 <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
               </div>
             </div>
-
         </div>
-
-
         </div>
       </div>
-
       <div class="modal-footer">
         <button class="btn done-button center-block"><img src="images/icons/png-check-mark-white.png" class="done-icon">Zatwierdź</button>
       </div>
-
     </div>
   </div>
 </div>
-
-
-
+<div th:include="fragments/bootstrap-scripts.html"></div>
 </body>
-
-
 </html>
