@@ -70,4 +70,9 @@ public class ApplicationController {
 		return "accessDenied";
 	}
 
+	@GetMapping("/404")
+	public String showPageNotFound() {
+		return "pageNotFound";
+	}
+
 }
