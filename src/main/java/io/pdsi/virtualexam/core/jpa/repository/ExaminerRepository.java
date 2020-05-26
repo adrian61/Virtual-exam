@@ -10,4 +10,6 @@ public interface ExaminerRepository extends JpaRepository<Examiner, Integer> {
 	Examiner findByLogin(@Param("login") String login);
 
 	Examiner findByFirstNameAndLastName(String firstName, String lastName);
+
+	Examiner getById(Integer id);
 }
