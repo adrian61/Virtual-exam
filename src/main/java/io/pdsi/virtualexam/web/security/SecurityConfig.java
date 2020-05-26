@@ -1,8 +1,8 @@
 package io.pdsi.virtualexam.web.security;
 
+import io.pdsi.virtualexam.web.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -21,23 +20,13 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Qualifier("examinerDetailsServiceImpl")
-	private final UserDetailsService userDetailsService;
-	private final DataSource dataSource;
-
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
-				.usersByUsernameQuery("select login as principal, password as credentials, true from \"examiner\" where login = ?")
-				.authoritiesByUsernameQuery("select login as principal, role as role from \"examiner\" where login = ?")
-				.rolePrefix("ROLE_");
-	}
+	private final CustomUserDetailsService userDetailsService;
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				.antMatchers("/", "/resources/**").permitAll()
+				.antMatchers("/teacherExamListPanel").hasAnyRole("USER")
 				.and()
 				.formLogin().loginPage("/").loginProcessingUrl("/auth_user").permitAll()
 				.and()
@@ -47,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/").deleteCookies("JSESSIONID")
 				.invalidateHttpSession(true);
 	}
-
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

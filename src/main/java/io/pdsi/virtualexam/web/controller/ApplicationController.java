@@ -1,5 +1,10 @@
 package io.pdsi.virtualexam.web.controller;
 
+import io.pdsi.virtualexam.core.jpa.entity.Examiner;
+import io.pdsi.virtualexam.web.service.ExaminerService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,9 +15,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+@Slf4j
 @Controller
 @RequestMapping("/")
 public class ApplicationController {
+	@Autowired
+	ExaminerService examinerService;
 
 	@GetMapping(value = "/")
 	public String showHomePage(Model model) {
@@ -37,7 +45,7 @@ public class ApplicationController {
 
 	//TODO Added temporarily
 	@GetMapping(value = "/teacherExamListPanel")
-	public String showTeacherExamListPanel() {
+	public String showTeacherExamListPanel(Model model) {
 		return "teacherExamListPanel";
 	}
 

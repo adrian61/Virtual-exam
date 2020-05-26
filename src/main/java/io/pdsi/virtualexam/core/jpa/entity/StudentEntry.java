@@ -12,6 +12,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Entity
+@Builder
 @Table(name = "student_entry", schema = "public")
 public class StudentEntry extends BaseEntity {
 	@JsonIgnore
