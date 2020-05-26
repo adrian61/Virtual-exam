@@ -3,120 +3,123 @@
 <head th:include="fragments/meta.html"></head>
 <head>
     <title>Exam panel</title>
-    <link rel="stylesheet" href="css/teacher_view.css">
+    <link rel="stylesheet" href="../static/css/exam-panel.css">
 </head>
 
 
 <body>
-<div class="container-fluid">
-    <div class="main-margin">
-        <div class="row">
-            <div class="col-lg-7" id="left-side">
-                <div class="row">
-                    <div class="logo" id="logo"><img class="img-responsive" src="images/logo.png"></div>
-                    <div id="exam-name">
-                        <div>Nazwa_kolokwium</div>
-                    </div>
+<div class="container-fluid main-margin">
+    <div class="row">
+
+        <div class="col-lg-7" id="left-side">
+            <div class="row">
+                <div class="logo" id="logo">
+                    <img class="img-responsive" src="images/logo.png"></div>
+                <div id="exam-name">
+                    <div>Nazwa_kolokwium</div>
                 </div>
-                <div class="row">
-                    <div id="left-panel">
-                        <div class="row">
-                            <div class="center-block" id="time-panel-up-text">
-                                <span id="clock">21:37</span>
-                                <span id="date">Pon, Maj 21 2020</span>
-                            </div>
-                        </div>
-                        <div class="row horizontal-line"></div>
-                        <div class="row">
-                            <div class="center-block" id="time-panel-middle-text">
-                                Link do kolokwium: <span id="link">km.me/zpo-123xfct</span>
-                            </div>
-                        </div>
-                        <div class="row horizontal-line"></div>
-                        <div class="row">
-                            <div class="center-block" id="time-panel-down-text">Pozostały czas: <span id="time-left">11:26</span>
-                            </div>
+            </div>
+
+            <div class="row">
+                <div id="left-panel">
+                    <div class="row">
+                        <div class="center-block" id="time-panel-up-text">
+                            <span id="clock">21:37</span>
+                            <span id="date">Pon, Maj 21 2020</span>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div id="left-panel">
-                        <span>GR. A</span>
-                        <div class="row">
-                            <div class="task-content">
-                                Treść zadania
-                            </div>
+                    <div class="row horizontal-line"></div>
+                    <div class="row">
+                        <div class="center-block" id="time-panel-middle-text">
+                            Link do kolokwium: <span id="link">km.me/zpo-123xfct</span>
                         </div>
-                        <span>GR. B</span>
-                        <div class="row">
-                            <div class="task-content">
-                                Treść zadania
-                            </div>
+                    </div>
+                    <div class="row horizontal-line"></div>
+                    <div class="row">
+                        <div class="center-block" id="time-panel-down-text">Pozostały czas: <span
+                                id="time-left">11:26</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5" id="right-side">
-                <div class="row">
-                    <div id="participants-up-text">
-                        Uczestnicy
+            <div class="row">
+                <div id="left-panel">
+                    <span>GR. A</span>
+                    <div class="row">
+                        <div class="task-content">
+                            Treść zadania
+                        </div>
+                    </div>
+                    <span>GR. B</span>
+                    <div class="row">
+                        <div class="task-content">
+                            Treść zadania
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div id="participants-table">
-                        <table>
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                            </tr>
-                            <tr>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Mexico</td>
-                            </tr>
-                            <tr>
-                                <td>Ernst Handel</td>
-                                <td>Roland Mendel</td>
-                                <td>Austria</td>
-                            </tr>
-                            <tr>
-                                <td>Island Trading</td>
-                                <td>Helen Bennett</td>
-                                <td>UK</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                        </table>
-                    </div>
+            </div>
+        </div>
+        <div class="col-lg-5" id="right-side">
+            <div class="row">
+                <div id="participants-up-text">
+                    Uczestnicy
+                </div>
+            </div>
+            <div class="row">
+                <div id="participants-table">
+                    <table>
+                        <tr>
+                            <td>Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                            <td>Germany</td>
+                        </tr>
+                        <tr>
+                            <td>Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                            <td>Mexico</td>
+                        </tr>
+                        <tr>
+                            <td>Ernst Handel</td>
+                            <td>Roland Mendel</td>
+                            <td>Austria</td>
+                        </tr>
+                        <tr>
+                            <td>Island Trading</td>
+                            <td>Helen Bennett</td>
+                            <td>UK</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                        <tr>
+                            <td>Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                            <td>Italy</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
 </body>
