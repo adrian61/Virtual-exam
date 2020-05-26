@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/meta.html"></head>
+<head><title>Mobilne Kolokwium</title></head>
+<body>
+
+<div class="container mt-sm-5">
+    <div class="card shadow-lg">
+        <div class="row">
+            <div class="col">
+                <div class="text-center display-4 m-1">Co ty robisz...</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-center display-4 m-1">Ziomek, tu nic nie ma.</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="text-center m-4 h1 font-weight-light ">
+                    <a href="/"><u>Wracaj do domu</u></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10"></div>
+            <div class="col">
+                <div class="">
+                    <img class="img-responsive" src="images/pika.png" alt="pika">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:include="fragments/bootstrap-scripts.html"></div>
+</body>
+</html>
