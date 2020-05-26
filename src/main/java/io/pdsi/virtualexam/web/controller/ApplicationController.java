@@ -44,15 +44,15 @@ public class ApplicationController {
 	}
 
 	//TODO Added temporarily
-	@GetMapping(value = "/teacherExamListPanel")
+	@GetMapping(value = "/examListPanel")
 	public String showTeacherExamListPanel(Model model) {
-		return "teacherExamListPanel";
+		return "examListPanel";
 	}
 
 	//TODO Added temporarily
-	@GetMapping(value = "/teacherPanel")
+	@GetMapping(value = "/examPanel")
 	public String showTeacherPanel() {
-		return "teacherPanel";
+		return "examPanel";
 	}
 
 //	@GetMapping(value = "/login")
