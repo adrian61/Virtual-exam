@@ -43,7 +43,6 @@ public class Examiner extends BaseEntity implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		grantedAuthorities.add(new SimpleGrantedAuthority(getRole()));
-		System.out.println(grantedAuthorities);
 		return grantedAuthorities;
 	}
 

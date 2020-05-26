@@ -32,9 +32,7 @@ public class ExamServiceImpl implements ExamService {
 
 	@Override
 	public List<ExamDto> getExamsByExaminer(Examiner examiner) {
-		System.out.println(examRepository.findAllByExaminerId(examiner));
-
-		return examRepository.findAllByExaminerId(examiner)
+		return examRepository.findAllByExaminerId(examiner.getUsername())
 				.stream()
 				.map(ExamDto::fromEntity)
 				.collect(Collectors.toList());

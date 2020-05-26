@@ -46,16 +46,6 @@ public class ApplicationController {
 	//TODO Added temporarily
 	@GetMapping(value = "/teacherExamListPanel")
 	public String showTeacherExamListPanel(Model model) {
-		String username = null;
-//		Examiner examiner = (Examiner) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		username = examiner.getUsername();
-//		System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-//		if (username != null) {
-//			examiner = examinerService.findByLogin(username);
-//			if (examiner != null) {
-//				model.addAttribute("id", examiner);
-//			}
-//		}
 		return "teacherExamListPanel";
 	}
 

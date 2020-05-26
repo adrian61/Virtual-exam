@@ -21,16 +21,6 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private final CustomUserDetailsService userDetailsService;
-	private final DataSource dataSource;
-
-
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.jdbcAuthentication().dataSource(dataSource)
-//				.usersByUsernameQuery("select login as principal, password as credentials, true from \"examiner\" where login = ?")
-//				.authoritiesByUsernameQuery("select login as principal, role as role from \"examiner\" where login = ?")
-//				.rolePrefix("ROLE_");
-//	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
