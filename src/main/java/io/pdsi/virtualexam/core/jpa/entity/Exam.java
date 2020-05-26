@@ -31,7 +31,7 @@ public class Exam extends BaseEntity  {
 	private ZonedDateTime endDate;
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "examiner_id")
+	@ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@JoinColumn(name = "examiner_id", referencedColumnName = "id")
 	private Examiner examinerId;
 }

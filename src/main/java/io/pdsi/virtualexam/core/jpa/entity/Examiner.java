@@ -13,13 +13,12 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Entity
+@Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "examiner", schema = "public")
 public class Examiner extends BaseEntity implements UserDetails {
 	@Column(name = "first_name")
@@ -30,7 +29,7 @@ public class Examiner extends BaseEntity implements UserDetails {
 
 	@Column(name = "login")
 	private String login;
-
+	@Setter
 	@Column(name = "password")
 	private String password;
 
@@ -43,7 +42,7 @@ public class Examiner extends BaseEntity implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-		grantedAuthorities.add(new SimpleGrantedAuthority(this.getRole()));
+		grantedAuthorities.add(new SimpleGrantedAuthority(getRole()));
 		System.out.println(grantedAuthorities);
 		return grantedAuthorities;
 	}

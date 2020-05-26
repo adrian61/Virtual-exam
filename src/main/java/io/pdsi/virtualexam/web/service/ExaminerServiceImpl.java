@@ -15,7 +15,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 	@Override
 	public void save(Examiner examiner) {
 		examiner.setPassword(bCryptPasswordEncoder.encode(examiner.getPassword()));
-		examiner.setRole(examiner.getRole());
+//		examiner.setRole(examiner.getRole());
 		examinerRepository.save(examiner);
 	}
 

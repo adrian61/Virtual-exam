@@ -41,9 +41,13 @@ public class ExamController {
 
 	@GetMapping("/exam")
 	public List<ExamDto> handleGetExamByExaminerId(@AuthenticationPrincipal UserDetails userDetails) {
-		System.out.println(userDetails.getUsername());
-		Examiner user = (Examiner) userDetails;
-		List<ExamDto> examDtoList = examService.getExamsByExaminer(user);
+		//Here should works cast by idk why not working Examiner ex = (Examiner) UserDetails
+		Examiner examiner = Examiner.builder()
+				.login(userDetails.getUsername())
+				.password(userDetails.getPassword())
+				.role(userDetails.getAuthorities().toString())
+				.build();
+		List<ExamDto> examDtoList = examService.getExamsByExaminer(examiner);
 
 		return examDtoList;
 	}
