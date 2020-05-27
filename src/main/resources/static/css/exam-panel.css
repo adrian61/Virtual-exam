@@ -119,7 +119,23 @@
     border-radius: 5px;
 }
 
-#participants-up-text {
+.participants-table{
+    animation-name: rollOut;
+    animation-duration: 2.5s;
+}
+
+@keyframes rollOut {
+    0% {
+        opacity: 0;
+        transform: translateY(-30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.participants-header {
     margin: 40px auto 0;
 
     width: 90%;
@@ -133,9 +149,11 @@
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     min-width: 400px;
+
+
 }
 
-#participants-table {
+#participants {
     margin: 0 auto;
     width: 85%;
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
@@ -154,3 +172,18 @@ td, th {
     background-color: #FFFFFF;
     border-bottom: thin solid #BDBDBD;
 }
+
+
+/*div {*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+/*    background: red;*/
+/*    position: relative;*/
+/*    animation-name: rollOut;*/
+/*    animation-duration: 3s;*/
+/*    animation-delay: 2s;*/
+/*    animation-fill-mode: both;*/
+/*}*/
+
+
+
