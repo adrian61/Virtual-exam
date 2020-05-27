@@ -1,6 +1,7 @@
 .grey-block{
     background: #E7E7E7;
     min-height: 500px;
+    height: 600px;
     /* width: 100%; */
 
     margin-top: 0px;
@@ -8,10 +9,9 @@
     margin-left: 100px;
     margin-right: 100px;
 
-    border-radius: 10px;
-
     padding-top: 10px;
     padding-bottom: 10px;
+    border-radius: 15px;
 }
 
 #panel-name{
