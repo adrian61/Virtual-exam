@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:include="fragments/meta.html"></head>
 <head>
     <title>Home page</title>
@@ -69,15 +70,18 @@
         <div class="col-lg-9"><img class="img-responsive" src="images/tlo.png"></div>
         <div class="col-lg-3 center-block">
             <div class="row center-block">
-                <button class="btn-lg btn-light flat-bottom" id="first-btn"><i class="fas fa-plus-circle"></i> UTWÓRZ
+                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn"><i
+                        class="fas fa-plus-circle"></i> UTWÓRZ
                     KOLOKWIUM
                 </button>
             </div>
-            <div class="row ">
-                <button class="btn-lg btn-success flat"><i class="fas fa-user-plus"></i> DOŁĄCZ DO KOLOKWIUM</button>
+            <div class="row">
+                <button class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus"></i> DOŁĄCZ DO KOLOKWIUM
+                </button>
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
-                <button class="btn-lg btn-light flat-top" id="last-btn">10:20 &nbsp; KOLOKWIUM ZPO</button>
+                <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">10:20 &nbsp; KOLOKWIUM ZPO
+                </button>
             </div>
 
         </div>
