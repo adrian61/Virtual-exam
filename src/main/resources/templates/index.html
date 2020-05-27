@@ -59,7 +59,9 @@
                     <a class="dropdown-item" href="#">Forgot password?</a>
                 </div>
                 <div sec:authorize="isAuthenticated()">
-                    <button class="btn-lg btn-success flat"><i class="fas fa-columns"></i> PANEL WYKŁADOWCY</button>
+                    <a href="/examListPanel">
+                        <button class="btn-lg btn-success flat"><i class="fas fa-columns"></i> PANEL WYKŁADOWCY</button>
+                    </a>
                     <a class="btn-lg btn-danger flat" href="/logout" role="button"><i class="fas fa-sign-out-alt"></i>Logout</a>
                 </div>
             </div>
