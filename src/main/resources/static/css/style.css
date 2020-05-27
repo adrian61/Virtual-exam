@@ -57,15 +57,15 @@ body {
 }
 
 .flat-bottom {
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
 
 }
 .flat {
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0 0 0 0;
 }
 
 .flat-top {
-    border-radius:  0px 0px 5px 5px;
+    border-radius:  0 0 5px 5px;
 }
 
 .btn-shadow {
@@ -103,6 +103,24 @@ body {
   margin-right: 8px;
   -webkit-filter: invert(1);
   filter: invert(1);
+}
+
+.table-row {
+    margin: 15px 0 15px 0;
+    padding: 15px;
+}
+
+.table-cell {
+    margin: inherit;
+    border: none;
+}
+
+.table-head-row {
+    background-color: #a4a4a4 !important;
+}
+
+.table-main {
+    border-radius: 5px;
 }
 
 #user-content {

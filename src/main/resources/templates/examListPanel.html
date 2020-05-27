@@ -27,24 +27,43 @@
         <div class="row">
             <div class="col-sm">
                 <div class="grey-block">
-                    <div class="row ">
+                    <table class="table-main">
+                        <thead>
+                            <tr class="table-head-row table-row">
+                                <th class="table-cell">Nazwa</th>
+                                <th class="table-cell">Data</th>
+                                <th class="table-cell">Godzina</th>
+                                <th class="table-cell">Dostęp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row" th:each="exam : ${examList}">
+                                <td class="table-cell" th:text="${exam.getTitle()}"></td>
+                                <td class="table-cell" th:text="${exam.getStartDate().toLocalDate()}"></td>
+                                <td class="table-cell" th:text="${exam.getStartDate().toLocalTime()}"></td>
+                                <td class="table-cell">LINK</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<div class="row ">
                         <div class="col-sm name-field hist-col-name">Nazwa</div>
                         <div class="col-sm date-field hist-col-name">Data</div>
                         <div class="col-sm hour-field hist-col-name">Godzina</div>
                         <div class="col-sm access-field hist-col-name">Dostęp</div>
                     </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
-                    </div>
+                    <div class="row center-block exam" th:each="exam : ${examList}">
+                        <div class="col-sm name-field hist-col-name" th:text="${exam.getTitle()}"></div>
+                        <div class="col-sm date-field hist-col-name"
+                             th:text="${exam.getStartDate().toLocalDate()}"></div>
+                        <div class="col-sm hour-field hist-col-name"
+                             th:text="${exam.getStartDate().toLocalTime()}"></div>
+                        <div class="col-sm access-field hist-col-name">LINK</div>
+                    </div>-->
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
