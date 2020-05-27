@@ -33,18 +33,19 @@
                         <div class="col-sm hour-field hist-col-name">Godzina</div>
                         <div class="col-sm access-field hist-col-name">Dostęp</div>
                     </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
-                    </div>
-                    <div class="row center-block exam">
+                    <div class="row center-block exam" th:each="exam : ${examList}">
+                        <div class="col-sm name-field hist-col-name" th:text="${exam.getTitle()}"></div>
+                        <div class="col-sm date-field hist-col-name"
+                             th:text="${exam.getStartDate().toLocalDate()}"></div>
+                        <div class="col-sm hour-field hist-col-name"
+                             th:text="${exam.getStartDate().toLocalTime()}"></div>
+                        <div class="col-sm access-field hist-col-name">LINK</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
