@@ -87,8 +87,14 @@
     margin-top: 20px;
 }
 
-#link {
+.link {
     color: coral;
+    transition: transform .2s; /* Animation */
+}
+
+.link:hover {
+    color: #ff7200;
+    transform: scale(1.15);
 }
 
 .horizontal-line {
@@ -148,6 +154,3 @@ td, th {
     background-color: #FFFFFF;
     border-bottom: thin solid #BDBDBD;
 }
-
-
-
