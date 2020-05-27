@@ -94,7 +94,6 @@
 }
 
 table {
-   border-collapse: collapse;
    width: 100%;
 }
  
@@ -108,11 +107,9 @@ table {
 }
  
  tr:nth-child(even) {
-   background-color: #4CAF50;
-   background-color: #FFFFFF;
+   background-color: #d5d5d5;
 }
 
  tr:nth-child(odd) {
-   background-color: #8BC34A;
-   background-color: #FFFFFF;
+   background-color: #e0e0e0;
 }
