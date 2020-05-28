@@ -106,13 +106,14 @@ body {
 }
 
 .table-row {
-    margin: 15px 0 15px 0;
-    padding: 15px;
 }
 
 .table-cell {
     margin: inherit;
     border: none;
+    background-color: transparent;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .table-head-row {
