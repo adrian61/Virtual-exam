@@ -8,32 +8,36 @@
 
 
 <body>
+
 <div class="container-fluid">
     <div class="main-margin">
         <div class="row">
-            <div class="col-lg-7" id="left-side">
+            <div class="col-lg-6 left-side">
                 <div class="row">
-                    <div class="logo" id="logo"><img class="img-responsive" src="images/logo.png"></div>
-                    <div id="exam-name">
-                        Nazwa_kolokwium
+                    <div class="col-md-auto p-0">
+                        <div class="logo">
+                            <a href="./"><img src="images/logo.png" alt="logo" class="img-responsive"></a>
+                        </div>
+                    </div>
+                    <div class="col p-0">
+                        <div class="exam-header">
+                            <div id="exam-name">Nazwa_kolokwium</div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="left-panel">
+                <div class="row left-panel">
+                    <div class="col">
                         <div class="row">
-                            <div class="center-block" id="time-panel-up-text">
-                                <span id="clock">21:37</span>
-                                <span id="date">Pon, Maj 21 2020</span>
-                            </div>
+                            <span id="clock" class="center-block">21:37 | Pon, Maj 21 2020</span>
                         </div>
                         <div class="row horizontal-line"></div>
                         <div class="row">
-                            <div class="center-block" id="time-panel-middle-text">
+                            <div class="center-block" style="line-height: 120px">
                                 <div class="row">
-                                    <div class="col-mr">
-                                        Link do kolokwium:
+                                    <div class="col-md-auto">
+                                        <span class="link-left-text">Link do kolokwium:</span>
                                     </div>
-                                    <div class="col pl-4">
+                                    <div class="col">
                                         <div class="link" id="link">km.me/zpo-123xfct</div>
                                     </div>
                                 </div>
@@ -41,77 +45,144 @@
                         </div>
                         <div class="row horizontal-line"></div>
                         <div class="row">
-                            <div class="center-block" id="time-panel-down-text">Pozostały czas: <span id="time-left">11:26</span>
+                            <div class="center-block" style="line-height: 80px">
+                                <span id="time-left">Pozostały czas: 11:26</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="center-block" id="time-panel-down-text"><span id=""></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="left-panel">
-                        <span>GR. A</span>
+
+                <div class="row left-panel">
+                    <div class="col">
                         <div class="row">
-                            <div class="task-content">
+                            <span class="ml-3 mt-2">Gr. A</span>
+                        </div>
+                        <div class="row">
+                            <div class="center-block task-content">
                                 Treść zadania
                             </div>
                         </div>
-                        <span>GR. B</span>
                         <div class="row">
-                            <div class="task-content">
+                            <span class="ml-3 mt-2">Gr. B</span>
+                        </div>
+                        <div class="row">
+                            <div class="center-block task-content">
                                 Treść zadania
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col participants-table" id="right-side">
+
+            <div class="col right-side mt-3 ml-3">
                 <div class="row">
-                    <div class="participants-header">
-                        Uczestnicy
-                    </div>
-                </div>
-                <div class="row">
-                    <div id="participants">
-                        <table>
-                            <tr>
-                                <td>231253</td>
-                                <td>Angela Merkel</td>
-                                <td>10:21:57</td>
-                                <td>Gr. A</td>
-                                <td class="table-checkmark">
-                                        <img src="images/icons/checkmark-green.png" class="checkmark-icon">
-                                </td>
-                                <td class="table-button red">
-                                        <img src="images/icons/delete.png" class="button-icon">
-                                </td>
-                                <td class="table-button yellow">
-                                        <img src="images/icons/timer.png" class="button-icon">
-                                </td>
-                                <td class="table-button blue">
-                                        <img src="images/icons/download2.png" class="button-icon">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>231253</td>
-                                <td>Angela Merkel</td>
-                                <td>10:21:57</td>
-                                <td>Gr. A</td>
-                                <td class="table-checkmark">
-                                    <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
-                                </td>
-                                <td class="table-button red">
-                                    <img src="images/icons/delete.png" class="button-icon">
-                                </td>
-                                <td class="table-button yellow">
-                                    <img src="images/icons/timer.png" class="button-icon">
-                                </td>
-                                <td class="table-button blue">
-                                    <img src="images/icons/download2.png" class="button-icon">
-                                </td>
-                            </tr>
-
-
-
-                        </table>
+                    <div class="col participants-table">
+                        <div class="row">
+                            <div class="participants-header">
+                                Uczestnicy
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="participants">
+                                <table>
+                                    <tr>
+                                        <td>231253</td>
+                                        <td>Angela Merkel</td>
+                                        <td>10:21:57</td>
+                                        <td>Gr. A</td>
+                                        <td class="table-checkmark">
+                                            <img src="images/icons/checkmark-green.png" class="checkmark-icon">
+                                        </td>
+                                        <td class="table-button red">
+                                            <img src="images/icons/delete.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button yellow">
+                                            <img src="images/icons/timer.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button blue">
+                                            <img src="images/icons/download2.png" class="button-icon">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>231253</td>
+                                        <td>Angela Merkel</td>
+                                        <td>10:21:57</td>
+                                        <td>Gr. A</td>
+                                        <td class="table-checkmark">
+                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
+                                        </td>
+                                        <td class="table-button red">
+                                            <img src="images/icons/delete.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button yellow">
+                                            <img src="images/icons/timer.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button blue">
+                                            <img src="images/icons/download2.png" class="button-icon">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>231253</td>
+                                        <td>Angela Merkel</td>
+                                        <td>10:21:57</td>
+                                        <td>Gr. A</td>
+                                        <td class="table-checkmark">
+                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
+                                        </td>
+                                        <td class="table-button red">
+                                            <img src="images/icons/delete.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button yellow">
+                                            <img src="images/icons/timer.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button blue">
+                                            <img src="images/icons/download2.png" class="button-icon">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>231253</td>
+                                        <td>Angela Merkel</td>
+                                        <td>10:21:57</td>
+                                        <td>Gr. A</td>
+                                        <td class="table-checkmark">
+                                            <img src="images/icons/checkmark-green.png" class="checkmark-icon">
+                                        </td>
+                                        <td class="table-button red">
+                                            <img src="images/icons/delete.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button yellow">
+                                            <img src="images/icons/timer.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button blue">
+                                            <img src="images/icons/download2.png" class="button-icon">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>231253</td>
+                                        <td>Angela Merkel</td>
+                                        <td>10:21:57</td>
+                                        <td>Gr. A</td>
+                                        <td class="table-checkmark">
+                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
+                                        </td>
+                                        <td class="table-button red">
+                                            <img src="images/icons/delete.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button yellow">
+                                            <img src="images/icons/timer.png" class="button-icon">
+                                        </td>
+                                        <td class="table-button blue">
+                                            <img src="images/icons/download2.png" class="button-icon">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,6 +190,23 @@
     </div>
 </div>
 
+<!--NAVIGATION BAR-->
+<div class="navigation">
+    <div class="row">
+        <div class="col pr-0 pl-3">
+            <button class="btn nav-button exam-hist-button">
+                <i class="fas fa-graduation-cap fa-fw" aria-hidden="true"></i>
+                <span>Historia kolokwiów</span>
+            </button>
+        </div>
+        <div class="col-md-auto pr-0 pl-3">
+            <button class="btn nav-button account-button">
+                <i class="fas fa-user fa-fw" aria-hidden="true"></i>
+                <span>Account</span>
+            </button>
+        </div>
+    </div>
+</div>
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
 </body>
