@@ -36,9 +36,7 @@ public class ApplicationController {
 		model.addAttribute("timestamp", Instant.now());
 		return "index";
 	}
-
-	//TODO Added temporarily
-	@GetMapping(value = "/examCreatorModal")
+	@GetMapping(value = "/examCreate")
 	public String showExamCreatorModal() {
 		return "examCreatorModal";
 	}
@@ -49,7 +47,6 @@ public class ApplicationController {
 		return "studentExamView";
 	}
 
-	//TODO Added temporarily
 	@GetMapping(value = "/examListPanel")
 	public String showTeacherExamListPanel(@AuthenticationPrincipal UserDetails userDetails, Model model) {
 		if (userDetails != null) {
@@ -73,10 +70,6 @@ public class ApplicationController {
 		return "examPanel";
 	}
 
-//	@GetMapping(value = "/login")
-//	public String loginPage(Model theModel) {
-//		return "login";
-//	}
 
 	@GetMapping(value = "/logout")
 	public String logoutPage() {
@@ -87,7 +80,7 @@ public class ApplicationController {
 	public String showAccessDenied() {
 		return "accessDenied";
 	}
-
+	//TODO Added temporarily
 	@GetMapping("/404")
 	public String showPageNotFound() {
 		return "pageNotFound";
