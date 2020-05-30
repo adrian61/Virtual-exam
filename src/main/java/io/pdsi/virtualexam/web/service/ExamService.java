@@ -9,9 +9,12 @@ import java.util.List;
 public interface ExamService {
 	List<Exam> findAll();
 
-	void saveExam(Exam exam);
+	void saveExam(ExamDto exam);
+
+	void saveExamForExaminer(ExamDto exam, Examiner examiner);
 
 	Exam getExam(Integer id);
+
 
 	List<ExamDto> getExamsByExaminer(Examiner examiner);
 

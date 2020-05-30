@@ -24,17 +24,9 @@ public class ExamController {
 //		return examService.findAll();
 //	}
 
-	@PostMapping("/")
-	@CrossOrigin
-	public Exam addExam(@RequestBody Exam exam) {
-		exam.setId(0);
-		examService.saveExam(exam);
-		return exam;
-	}
-
 	@PutMapping("/")
 	@CrossOrigin
-	public Exam updateExam(@RequestBody Exam exam) {
+	public ExamDto updateExam(@RequestBody ExamDto exam) {
 		examService.saveExam(exam);
 		return exam;
 	}
