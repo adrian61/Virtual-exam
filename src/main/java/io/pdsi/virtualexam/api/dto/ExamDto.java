@@ -12,12 +12,14 @@ public class ExamDto {
 	private Integer id;
 	private String title;
 	private ZonedDateTime startDate;
+	private ZonedDateTime endDate;
 
 	public static ExamDto fromEntity(Exam exam) {
 		return ExamDto.builder()
 				.id(exam.getId())
 				.title(exam.getTitle())
 				.startDate(exam.getStartDate())
+				.endDate(exam.getEndDate())
 				.build();
 	}
 
@@ -25,6 +27,7 @@ public class ExamDto {
 		Exam exam = Exam.builder()
 				.title(this.getTitle())
 				.startDate(this.getStartDate())
+				.endDate(this.getEndDate())
 				.build();
 		exam.setId(this.getId());
 		return exam;
