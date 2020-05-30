@@ -24,7 +24,11 @@
             </div>
         </div>
         <div class="row">
-            <button id="button-create-exam">Utwórz kolokwium</button>
+            <button id="button-create-exam" data-toggle="modal"
+                    data-target="#createColloquiumModal">
+                <div><i class="fas fa-plus-circle"></i></div> <div><span>Utwórz kolokwium</span></div>
+            </button>
+            <div th:insert="/fragments/examCreatorModal.html"></div>
         </div>
         <div class="row">
             <div class="col-sm">
