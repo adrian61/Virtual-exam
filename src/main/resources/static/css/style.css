@@ -4,27 +4,31 @@ body {
     /*background-color: #af4e4c;*/
 }
 
-.font-main{
+.font-main {
     font-family: Overlock SC, fantasy;
 }
 
-.color1{
+.color1 {
     background-color: #af4e4c;
 }
-.color2{
+
+.color2 {
     background-color: #4caf50;
 }
 
 
-.main-margin{
-  margin-left: 15px;
-  margin-right: 15px;
-  margin-top: 15px;
+.main-margin {
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
 }
 
-.logo{
-  width: 160px;
-  height: 160px;
+.logo {
+    transition: transform .9s; /* Animation */
+}
+
+.logo:hover {
+    transform: scale(1.06);
 }
 
 .avatar {
@@ -35,10 +39,7 @@ body {
 }
 
 .center-block {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
     display: block;
 }
 
@@ -60,12 +61,13 @@ body {
     border-radius: 5px 5px 0 0;
 
 }
+
 .flat {
     border-radius: 0 0 0 0;
 }
 
 .flat-top {
-    border-radius:  0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
 }
 
 .btn-shadow {
@@ -78,31 +80,28 @@ body {
 }
 
 .content-frame {
-  background-color: #FFFFFF;
-  border-radius: 2px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
 }
 
 .user-content-item {
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
+    padding: 10px;
+    margin: 10px 20px;
 }
 
 .item-title {
-  margin-bottom: -20px;
-  padding-left: 0px;
+    margin-bottom: -20px;
+    padding-left: 0;
 }
 
 .item-file {
-  font-style: italic;
+    font-style: italic;
 }
 
 .icon {
-  margin-right: 8px;
-  -webkit-filter: invert(1);
-  filter: invert(1);
+    margin-right: 8px;
+    -webkit-filter: invert(1);
+    filter: invert(1);
 }
 
 .table-row {
@@ -125,22 +124,57 @@ body {
 }
 
 #user-content {
-  background-color: #E7E7E7;
-  border-radius: 4px;
-  margin: 10px;
-  padding: 15px;
+    background-color: #E7E7E7;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 15px;
 }
 
 #task-btn-download {
-  height: inherit;
+    height: inherit;
 }
 
 #task-end {
-  height: 30px;
+    height: 30px;
 }
 
-#timeleft {
-  padding: 18px;
+#time-left {
+    padding: 18px;
+}
+
+.navigation {
+    position: absolute;
+    margin-right: 30px;
+    margin-top: 10px;
+    top: 0;
+    right: 0;
+}
+
+.nav-button {
+    background-color: #BBDEFB;
+    font-family: Overlock SC, fantasy;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: thin solid;
+    transition: background-color ease-in-out 0.1s;
+}
+
+.nav-button:hover {
+    background-color: #1c7430;
+    /*background-color: #4caf50;*/
+    color: white;
+}
+
+:focus {
+    outline: none;
+}
+
+.account-button {
+
+}
+
+.exam-hist-button {
+
 }
 
 
