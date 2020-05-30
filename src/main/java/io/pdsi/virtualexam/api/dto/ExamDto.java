@@ -15,6 +15,7 @@ import java.time.ZonedDateTime;
 public class ExamDto {
 	private Integer id;
 	private String title;
+	private String password;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;
 
@@ -23,6 +24,7 @@ public class ExamDto {
 		return ExamDto.builder()
 				.id(exam.getId())
 				.title(exam.getTitle())
+				.password(exam.getPassword())
 				.startDate(exam.getStartDate())
 				.endDate(exam.getEndDate())
 				.build();
@@ -32,6 +34,7 @@ public class ExamDto {
 	public Exam toEntity() {
 		Exam exam = Exam.builder()
 				.title(this.getTitle())
+				.password(this.getPassword())
 				.startDate(this.getStartDate())
 				.endDate(this.getEndDate())
 				.build();

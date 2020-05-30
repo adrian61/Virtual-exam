@@ -5,6 +5,7 @@ $('document').ready(function ($) {
         var href = $(this).attr('href');
         $.get(href, function (exam, status) {
             $('#title').val(exam.title);
+            $('#password').val(exam.password);
         });
         console.log("here2");
         $('#createColloquiumModal').modal();
