@@ -26,8 +26,11 @@
     <div class="row justify-content-end">
         <div class="col-lg-3 actions">
             <div class="row center-block">
-                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn">
+                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn" data-toggle="modal"
+                        data-target="#createColloquiumModal">
                     <i class="fas fa-plus-circle"></i><span> Utwórz kolokwium</span>
+                </button>
+                <div th:include="/fragments/examCreatorModal.html"></div>
                 </button>
             </div>
             <div class="row">
