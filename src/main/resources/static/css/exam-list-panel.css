@@ -26,9 +26,12 @@
     font-family: Overlock SC;
     font-size: 60px;
     text-align: center;
+
 }
 
 #button-create-exam{
+    display: inline-flex;
+    align-items: center;
     margin-top: 0px;
     margin-left: 75%;
     width: 120px;

@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.Instant;
@@ -37,10 +38,15 @@ public class ApplicationController {
 		return "index";
 	}
 
-	//TODO Added temporarily
-	@GetMapping(value = "/examCreatorModal")
-	public String showExamCreatorModal() {
-		return "examCreatorModal";
+	@PostMapping(value = "/createExam")
+	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, ExamDto exam) {
+		if (userDetails != null) {
+			System.out.println(userDetails.getUsername());
+		} else {
+			log.error("User not found");
+		}
+		System.out.println(exam.getTitle());
+		return "redirect:/";
 	}
 
 	//TODO Added temporarily
@@ -49,7 +55,6 @@ public class ApplicationController {
 		return "studentExamView";
 	}
 
-	//TODO Added temporarily
 	@GetMapping(value = "/examListPanel")
 	public String showTeacherExamListPanel(@AuthenticationPrincipal UserDetails userDetails, Model model) {
 		if (userDetails != null) {
@@ -73,10 +78,6 @@ public class ApplicationController {
 		return "examPanel";
 	}
 
-//	@GetMapping(value = "/login")
-//	public String loginPage(Model theModel) {
-//		return "login";
-//	}
 
 	@GetMapping(value = "/logout")
 	public String logoutPage() {
@@ -87,7 +88,7 @@ public class ApplicationController {
 	public String showAccessDenied() {
 		return "accessDenied";
 	}
-
+	//TODO Added temporarily
 	@GetMapping("/404")
 	public String showPageNotFound() {
 		return "pageNotFound";
