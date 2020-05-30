@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.Instant;
@@ -36,8 +37,8 @@ public class ApplicationController {
 		model.addAttribute("timestamp", Instant.now());
 		return "index";
 	}
-	@GetMapping(value = "/examCreate")
-	public String showExamCreatorModal() {
+	@PostMapping(value = "/examCreate")
+	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails,Model model) {
 		return "examCreatorModal";
 	}
 
