@@ -8,6 +8,7 @@
 <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 
 
+
 <body>
 
 <div class="container-fluid main-margin">
@@ -26,7 +27,7 @@
     <div class="row justify-content-end">
         <div class="col-lg-3 actions">
             <div class="row center-block">
-                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn" data-toggle="modal"
+                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="createExamButton" data-toggle="modal"
                         data-target="#createColloquiumModal">
                     <i class="fas fa-plus-circle"></i><span> Utwórz kolokwium</span>
                 </button>
@@ -111,6 +112,7 @@
 </div>
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
+<script type="text/javascript" th:src="@{/js/modalFormSender.js}"></script>
 </body>
 
 </html>

@@ -37,9 +37,16 @@ public class ApplicationController {
 		model.addAttribute("timestamp", Instant.now());
 		return "index";
 	}
-	@PostMapping(value = "/examCreate")
-	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails,Model model) {
-		return "examCreatorModal";
+
+	@PostMapping(value = "/createExam")
+	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, ExamDto exam) {
+		if (userDetails != null) {
+			System.out.println(userDetails.getUsername());
+		} else {
+			log.error("User not found");
+		}
+		System.out.println(exam.getTitle());
+		return "redirect:/";
 	}
 
 	//TODO Added temporarily

@@ -4,115 +4,118 @@
     <style scoped>
         @import "css/modal.css";
     </style>
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="border-radius: 15px;">
-            <div class="modal-header">
-                <div class="center-block" id="modal-title">Utwórz kolokwium</div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Nazwa:</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="text" placeholder="Nazwa_kolokwium">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Hasło:</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="password" placeholder="-">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Czas na kolokwium (minuty):</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="number" placeholder="60">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Liczba grup:</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="number" placeholder="3">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Data rozpoczęcia:</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="datetime" placeholder="DD/MM/YYYY">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <label class="modal-input-label">Czas rozpoczęcia:</label>
-                        </div>
-                        <div class="col-sm">
-                            <input class="modal-input" type="" placeholder="12:00">
-                        </div>
-                    </div>
-                    <div id="files-for-groups" style="margin-top: 40px;">
-                        <div class="row drag-files">
-                            <label class="group-label">Grupa A</label>
+    <form th:action="@{/createExam}" method="post">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 15px;">
+                <div class="modal-header">
+                    <div class="center-block" id="modal-title">Utwórz kolokwium</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
                             <div class="col-sm">
-                                <div class="upload-files-button">
-                                    <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                         class="icon">Wybierz
-                                        pliki...
-                                    </button>
+                                <label class="modal-input-label">Nazwa:</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="text" placeholder="Nazwa_kolokwium" name="title">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="modal-input-label">Hasło:</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="password" placeholder="-">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="modal-input-label">Czas na kolokwium (minuty):</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="number" placeholder="60">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="modal-input-label">Liczba grup:</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="number" placeholder="3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="modal-input-label">Data rozpoczęcia:</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="datetime" placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm">
+                                <label class="modal-input-label">Czas rozpoczęcia:</label>
+                            </div>
+                            <div class="col-sm">
+                                <input class="modal-input" type="" placeholder="12:00">
+                            </div>
+                        </div>
+                        <div id="files-for-groups" style="margin-top: 40px;">
+                            <div class="row drag-files">
+                                <label class="group-label">Grupa A</label>
+                                <div class="col-sm">
+                                    <div class="upload-files-button">
+                                        <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
+                                                                             class="icon">Wybierz
+                                            pliki...
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
-                            </div>
-                        </div>
-                        <div class="row drag-files">
-                            <label class="group-label">Grupa B</label>
-                            <div class="col-sm">
-                                <div class="upload-files-button">
-                                    <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                         class="icon">Wybierz
-                                        pliki...
-                                    </button>
+                            <div class="row drag-files">
+                                <label class="group-label">Grupa B</label>
+                                <div class="col-sm">
+                                    <div class="upload-files-button">
+                                        <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
+                                                                             class="icon">Wybierz
+                                            pliki...
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
-                            </div>
-                        </div>
-                        <div class="row drag-files">
-                            <label class="group-label">Grupa C</label>
-                            <div class="col-sm">
-                                <div class="upload-files-button">
-                                    <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                         class="icon">Wybierz
-                                        pliki...
-                                    </button>
+                            <div class="row drag-files">
+                                <label class="group-label">Grupa C</label>
+                                <div class="col-sm">
+                                    <div class="upload-files-button">
+                                        <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
+                                                                             class="icon">Wybierz
+                                            pliki...
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-sm">
-                                <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
+                                <div class="col-sm">
+                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn done-button center-block"><img th:src="@{/images/icons/checkmark-green.png}"
-                                                                  class="done-icon">Zatwierdź
-                </button>
+                <div class="modal-footer">
+                    <button type="submit" class="btn done-button center-block"><img
+                            th:src="@{/images/icons/checkmark-green.png}"
+                            class="done-icon">Zatwierdź
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>

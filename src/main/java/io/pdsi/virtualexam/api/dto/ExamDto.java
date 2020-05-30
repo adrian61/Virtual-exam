@@ -1,6 +1,7 @@
 package io.pdsi.virtualexam.api.dto;
 
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -8,11 +9,13 @@ import java.time.ZonedDateTime;
 
 @Builder
 @Getter
+@AllArgsConstructor
 public class ExamDto {
 	private Integer id;
 	private String title;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;
+
 
 	public static ExamDto fromEntity(Exam exam) {
 		return ExamDto.builder()
@@ -22,6 +25,7 @@ public class ExamDto {
 				.endDate(exam.getEndDate())
 				.build();
 	}
+
 
 	public Exam toEntity() {
 		Exam exam = Exam.builder()
