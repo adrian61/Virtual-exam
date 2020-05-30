@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -43,10 +44,17 @@ public class ApplicationController {
 	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, ExamDto exam) {
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
-			examService.saveExam(exam);
-		} catch (DataAccessException | NullPointerException e) {
+			//implemented for a moment cuz probably createColloquiumModal will be refactored
+			exam.setStartDate(ZonedDateTime.now());
+			exam.setEndDate(ZonedDateTime.now());
+			examService.saveExamForExaminer(exam, loggedUser);
+		} catch (NullPointerException e) {
 			log.error("User not found");
-			//TODO maybe in the future we can add warning alert
+			//TODO maybe in the future we can add warning alert with message
+			return "redirect:/";
+		} catch (DataAccessException e) {
+			log.error(e.getLocalizedMessage());
+			//TODO maybe in the future we can add warning alert with message
 			return "redirect:/";
 		}
 

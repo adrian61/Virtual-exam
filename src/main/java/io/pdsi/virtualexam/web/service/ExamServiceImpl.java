@@ -26,6 +26,13 @@ public class ExamServiceImpl implements ExamService {
 	}
 
 	@Override
+	public void saveExamForExaminer(ExamDto exam, Examiner examiner) {
+		Exam examToSave=exam.toEntity();
+		examToSave.setExaminerId(examiner);
+		examRepository.save(examToSave);
+	}
+
+	@Override
 	public Exam getExam(Integer id) {
 		return examRepository.findById(id).orElse(null);
 	}

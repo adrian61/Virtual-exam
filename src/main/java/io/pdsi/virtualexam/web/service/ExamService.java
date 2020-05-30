@@ -11,6 +11,8 @@ public interface ExamService {
 
 	void saveExam(ExamDto exam);
 
+	void saveExamForExaminer(ExamDto exam, Examiner examiner);
+
 	Exam getExam(Integer id);
 
 
