@@ -6,6 +6,7 @@ import io.pdsi.virtualexam.web.service.ExamService;
 import io.pdsi.virtualexam.web.service.ExaminerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.DataAccessException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -40,12 +41,15 @@ public class ApplicationController {
 
 	@PostMapping(value = "/createExam")
 	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, ExamDto exam) {
-		if (userDetails != null) {
-			System.out.println(userDetails.getUsername());
-		} else {
+		try {
+			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
+			examService.saveExam(exam);
+		} catch (DataAccessException | NullPointerException e) {
 			log.error("User not found");
+			//TODO maybe in the future we can add warning alert
+			return "redirect:/";
 		}
-		System.out.println(exam.getTitle());
+
 		return "redirect:/";
 	}
 

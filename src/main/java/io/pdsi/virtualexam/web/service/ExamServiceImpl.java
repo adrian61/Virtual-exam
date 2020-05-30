@@ -21,8 +21,8 @@ public class ExamServiceImpl implements ExamService {
 	}
 
 	@Override
-	public void saveExam(Exam exam) {
-		examRepository.save(exam);
+	public void saveExam(ExamDto exam) {
+		examRepository.save(exam.toEntity());
 	}
 
 	@Override
