@@ -9,17 +9,58 @@
 
 
 <body>
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-2 center-block"><img class="img-responsive" src="images/logo.png"></div>
-        <div class="col-lg-9 center-block text-center">
-            <small class="font-weight-bold display-3"
-                   th:text="${#dates.format(standardDate, 'HH:mm | MMM dd yyyy')}">
-            </small>
+
+<div class="container-fluid main-margin">
+    <div class="row">
+        <div class="col-md-auto p-0">
+            <div class="logo">
+                <a href="./"><img src="images/logo.png" alt="logo" class="img-responsive"></a>
+            </div>
         </div>
-        <div class="col-12 col-sm-auto top-block">
+        <div class="col">
+            <div class="font-weight-light display-3 mt-4 ml-3"
+                 th:text="${#dates.format(standardDate, 'HH:mm | MMM dd yyyy')}">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="col-lg-3 actions">
+            <div class="row center-block">
+                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn">
+                    <i class="fas fa-plus-circle"></i><span> Utwórz kolokwium</span>
+                </button>
+            </div>
+            <div class="row">
+                <button class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus">
+                </i><span> Dołącz do kolokwium</span>
+                </button>
+            </div>
+            <div class="row center-block" sec:authorize="isAuthenticated()">
+                <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">
+                    </i><span> 10:20 Kolokwium ZPO</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--NAVIGATION BAR (kod musi być na dole)-->
+<div class="navigation">
+    <div class="row">
+        <div class="col pr-0 pl-3" sec:authorize="isAuthenticated()">
+            <button class="btn nav-button exam-hist-button" onclick="location.href='/examListPanel'">
+                <i class="fas fa-graduation-cap fa-fw" aria-hidden="true"></i>
+                <span>Historia kolokwiów</span>
+            </button>
+        </div>
+        <div class="col-md-auto pr-0 pl-3">
             <a href="#" id="dropdownLogin" data-toggle="dropdown">
-                <img class="avatar img-responsive" th:src="@{/images/avatar.png}"></a>
+                <button class="btn nav-button account-button">
+                    <i class="fas fa-user fa-fw" aria-hidden="true"></i>
+                    <span>Account</span>
+                </button>
+            </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div sec:authorize="!isAuthenticated()">
                     <form th:action="@{/auth_user}" method="POST" class="px-4 py-3">
@@ -59,33 +100,10 @@
                     <a class="dropdown-item" href="#">Forgot password?</a>
                 </div>
                 <div sec:authorize="isAuthenticated()">
-                    <a href="/examListPanel">
-                        <button class="btn-lg btn-success flat"><i class="fas fa-columns"></i> PANEL WYKŁADOWCY</button>
-                    </a>
-                    <a class="btn-lg btn-danger flat" href="/logout" role="button"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    <a class="btn-lg btn-danger flat" href="/logout" role="button"><i
+                            class="fas fa-sign-out-alt"></i>Logout</a>
                 </div>
             </div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="col-lg-9"><img class="img-responsive" src="images/tlo.png"></div>
-        <div class="col-lg-3 center-block">
-            <div class="row center-block">
-                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="first-btn"><i
-                        class="fas fa-plus-circle"></i> UTWÓRZ
-                    KOLOKWIUM
-                </button>
-            </div>
-            <div class="row">
-                <button class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus"></i> DOŁĄCZ DO KOLOKWIUM
-                </button>
-            </div>
-            <div class="row center-block" sec:authorize="isAuthenticated()">
-                <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">10:20 &nbsp; KOLOKWIUM ZPO
-                </button>
-            </div>
-
         </div>
     </div>
 </div>
