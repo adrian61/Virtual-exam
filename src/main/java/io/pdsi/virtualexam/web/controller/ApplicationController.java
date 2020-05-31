@@ -48,6 +48,7 @@ public class ApplicationController {
 	@PostMapping(value = "/createExam")
 	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, @Valid @ModelAttribute("exam") ExamDto exam, BindingResult result, HttpServletRequest request) {
 		if (result.hasErrors()) {
+			//TODO sometimes not working, should be repaired
 			String referrer = request.getHeader("referer");
 			if (referrer.equals("http://localhost:8083/examListPanel"))
 				return "examListPanel";
