@@ -11,10 +11,14 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,11 +41,20 @@ public class ApplicationController {
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		model.addAttribute("localDate", LocalDate.now());
 		model.addAttribute("timestamp", Instant.now());
+		model.addAttribute("exam", new ExamDto());
 		return "index";
 	}
 
 	@PostMapping(value = "/createExam")
-	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, ExamDto exam) {
+	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, @Valid @ModelAttribute("exam") ExamDto exam, BindingResult result, HttpServletRequest request) {
+		if (result.hasErrors()) {
+			//TODO sometimes not working, should be repaired
+			String referrer = request.getHeader("referer");
+			if (referrer.equals("http://localhost:8083/examListPanel"))
+				return "examListPanel";
+			else
+				return "index";
+		}
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
 			//implemented for a moment cuz probably createColloquiumModal will be refactored
@@ -78,6 +91,7 @@ public class ApplicationController {
 					.build();
 			List<ExamDto> examDtoList = examService.getExamsByExaminer(examiner);
 			model.addAttribute("examList", examDtoList);
+			model.addAttribute("exam", new ExamDto());
 		} else {
 			log.error("User not found");
 		}
