@@ -23,8 +23,11 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Controller
@@ -36,12 +39,33 @@ public class ApplicationController {
 
 
 	@GetMapping(value = "/")
-	public String showHomePage(Model model) {
+	public String showHomePage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
 		model.addAttribute("standardDate", new Date());
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		model.addAttribute("localDate", LocalDate.now());
 		model.addAttribute("timestamp", Instant.now());
 		model.addAttribute("exam", new ExamDto());
+		if (userDetails != null) {
+			Examiner examiner = Examiner.builder()
+					.login(userDetails.getUsername())
+					.password(userDetails.getPassword())
+					.role(userDetails.getAuthorities().toString())
+					.build();
+			List<ExamDto> examDtoList = examService.getExamsByExaminer(examiner)
+					.stream()
+					.sorted(Comparator.comparing(ExamDto::getStartDate))
+					.collect(Collectors.toList());
+			int closestExamIndex = 0;
+			for (int i = 0; i < examDtoList.size(); i++) {
+				if (examDtoList.get(i).getStartDate().isAfter(ZonedDateTime.now())) {
+					closestExamIndex = i;
+					break;
+				}
+			}
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM HH:mm");
+			model.addAttribute("closestExamTitle", examDtoList.get(closestExamIndex).getTitle());
+			model.addAttribute("closestExamTime", examDtoList.get(closestExamIndex).getStartDate().format(formatter));
+		}
 		return "index";
 	}
 
