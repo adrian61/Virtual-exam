@@ -40,7 +40,7 @@
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
                 <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">
-                    </i><span> 10:20 Kolokwium ZPO</span>
+                    </i><span th:text="${closestExamTime} +' '+ ${closestExamTitle}"> </span>
                 </button>
             </div>
 
