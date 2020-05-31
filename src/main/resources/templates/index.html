@@ -9,7 +9,7 @@
 
 
 
-<body>
+<body onload="modelopen()">
 
 <div class="container-fluid main-margin">
     <div class="row">
@@ -113,6 +113,15 @@
 
 <div th:include="fragments/bootstrap-scripts.html"></div>
 <script type="text/javascript" th:src="@{/js/modalFormSender.js}"></script>
+<script>function modelopen() {
+    var temp = document.getElementById("errormsg").innerHTML;
+    console.log("temp val:" + temp + ":end");
+    console.log(temp.length);
+    if (temp.length !== 50) {
+        $('#createColloquiumModal').modal('show');
+    }
+}
+</script>
 </body>
 
 </html>

@@ -1,20 +1,22 @@
 package io.pdsi.virtualexam.api.dto;
 
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.time.ZonedDateTime;
 
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ExamDto {
 	private Integer id;
+	@NotEmpty(message = "Title shouldn't be empty")
 	private String title;
+	@Size(min = 2, max = 64, message = "Password length should be between 2 and 64")
 	private String password;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;

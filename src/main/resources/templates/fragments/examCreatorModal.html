@@ -4,7 +4,7 @@
     <style scoped>
         @import "css/modal.css";
     </style>
-    <form th:action="@{/createExam}" method="post">
+    <form th:action="@{/createExam}" th:object="${exam}" method="post">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="border-radius: 15px;">
                 <div class="modal-header">
@@ -15,12 +15,14 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
+
                         <div class="row">
                             <div class="col-sm">
                                 <label class="modal-input-label">Nazwa:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="text" placeholder="Nazwa_kolokwium" name="title">
+                                <input class="modal-input" type="text" placeholder="Nazwa_kolokwium" name="title"
+                                       th:field="*{title}">
                             </div>
                         </div>
                         <div class="row">
@@ -28,9 +30,16 @@
                                 <label class="modal-input-label">Hasło:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="password" placeholder="-" name="password">
+                                <input class="modal-input" type="password" placeholder="-" name="password"
+                                       th:field="*{password}">
                             </div>
                         </div>
+                        <p id="errormsg">
+                        <div class="row" th:if="${#fields.hasErrors('password')}">
+                            <div class="col-sm"></div>
+                            <div class="col-sm alert alert-danger" th:errors="*{password}"></div>
+                        </div>
+                        </p>
                         <div class="row">
                             <div class="col-sm">
                                 <label class="modal-input-label">Czas na kolokwium (minuty):</label>
