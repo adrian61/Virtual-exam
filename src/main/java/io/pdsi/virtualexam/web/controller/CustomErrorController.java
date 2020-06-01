@@ -14,6 +14,7 @@ public class CustomErrorController implements ErrorController {
 	@RequestMapping("/error")
 	public ModelAndView handleError(HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("errorMsg", response.getStatus());
 
 		if(response.getStatus() == HttpStatus.NOT_FOUND.value()) {
 			modelAndView.setViewName("pageNotFound");
@@ -23,7 +24,6 @@ public class CustomErrorController implements ErrorController {
 		}
 		else {
 			modelAndView.setViewName("errorPage");
-			modelAndView.addObject("errorMsg", RequestDispatcher.ERROR_STATUS_CODE);	//raczej nie o to chodzi
 		}
 
 		return modelAndView;
