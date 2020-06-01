@@ -8,7 +8,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="border-radius: 15px;">
                 <div class="modal-header">
-                    <div class="center-block" id="modal-title">Utwórz kolokwium</div>
+                    <div class="center-block" id="modal-title">Create exam</div>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -18,16 +18,16 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Nazwa:</label>
+                                <label class="modal-input-label">Title:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="text" placeholder="Nazwa_kolokwium" name="title"
+                                <input class="modal-input" type="text" placeholder="Exam title" name="title"
                                        th:field="*{title}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Hasło:</label>
+                                <label class="modal-input-label">Password:</label>
                             </div>
                             <div class="col-sm">
                                 <input class="modal-input" type="password" placeholder="-" name="password"
@@ -42,7 +42,7 @@
                         </p>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Czas na kolokwium (minuty):</label>
+                                <label class="modal-input-label">Time (minutes):</label>
                             </div>
                             <div class="col-sm">
                                 <input class="modal-input" type="number" placeholder="60">
@@ -50,7 +50,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Liczba grup:</label>
+                                <label class="modal-input-label">Number of groups:</label>
                             </div>
                             <div class="col-sm">
                                 <input class="modal-input" type="number" placeholder="3">
@@ -58,47 +58,45 @@
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Data rozpoczęcia:</label>
+                                <label class="modal-input-label">Begin date:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="datetime" placeholder="DD/MM/YYYY">
+                                <input class="modal-input" type="date" placeholder="DD/MM/YYYY">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Czas rozpoczęcia:</label>
+                                <label class="modal-input-label">Begin time:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="" placeholder="12:00">
+                                <input class="modal-input" type="datetime-local" placeholder="12:00">
                             </div>
                         </div>
                         <div id="files-for-groups" style="margin-top: 40px;">
                             <div class="row drag-files">
-                                <label class="group-label">Grupa A</label>
+                                <label class="group-label">Group A</label>
                                 <div class="col-sm">
                                     <div class="upload-files-button">
                                         <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                             class="icon">Wybierz
-                                            pliki...
+                                                                             class="icon">Choose files...
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
+                                    <em class="vertical-center"><small>or drag files here</small></em>
                                 </div>
                             </div>
                             <div class="row drag-files">
-                                <label class="group-label">Grupa B</label>
+                                <label class="group-label">Group B</label>
                                 <div class="col-sm">
                                     <div class="upload-files-button">
                                         <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                             class="icon">Wybierz
-                                            pliki...
+                                                                             class="icon">Choose files...
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
+                                    <em class="vertical-center"><small>or drag files here</small></em>
                                 </div>
                             </div>
                             <div class="row drag-files">
@@ -106,13 +104,12 @@
                                 <div class="col-sm">
                                     <div class="upload-files-button">
                                         <button class="btn btn-primary"><img th:src="@{/images/icons/upload.png}"
-                                                                             class="icon">Wybierz
-                                            pliki...
+                                                                             class="icon">Choose files...
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col-sm">
-                                    <em class="vertical-center"><small>lub przeciągnij tutaj</small></em>
+                                    <em class="vertical-center"><small>or drag files here</small></em>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +118,7 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn done-button center-block"><img
                             th:src="@{/images/icons/checkmark-green.png}"
-                            class="done-icon">Zatwierdź
+                            class="done-icon">Confirm
                     </button>
                 </div>
             </div>

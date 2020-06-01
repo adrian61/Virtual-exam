@@ -29,13 +29,13 @@
             <div class="row center-block">
                 <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="createExamButton" data-toggle="modal"
                         data-target="#createColloquiumModal">
-                    <i class="fas fa-plus-circle"></i><span> Utwórz kolokwium</span>
+                    <i class="fas fa-plus-circle"></i><span> New exam</span>
                 </button>
                 <div th:insert="fragments/examCreatorModal.html"></div>
             </div>
             <div class="row">
-                <button class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus">
-                </i><span> Dołącz do kolokwium</span>
+                <button id="btn-join" class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus">
+                </i><span> Join exam</span>
                 </button>
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
@@ -54,7 +54,7 @@
         <div class="col pr-0 pl-3" sec:authorize="isAuthenticated()">
             <button class="btn nav-button exam-hist-button" onclick="location.href='/examListPanel'">
                 <i class="fas fa-graduation-cap fa-fw" aria-hidden="true"></i>
-                <span>Historia kolokwiów</span>
+                <span>Exam history</span>
             </button>
         </div>
         <div class="col-md-auto pr-0 pl-3">

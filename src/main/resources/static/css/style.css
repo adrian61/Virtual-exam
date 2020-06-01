@@ -142,6 +142,10 @@ body {
     padding: 18px;
 }
 
+#btn-join {
+    min-width: 190px;
+}
+
 .navigation {
     position: absolute;
     margin-right: 30px;
