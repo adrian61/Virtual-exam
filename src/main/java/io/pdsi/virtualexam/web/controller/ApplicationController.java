@@ -138,14 +138,4 @@ public class ApplicationController {
 	public String showAccessDenied() {
 		return "accessDenied";
 	}
-	//TODO Added temporarily
-	@GetMapping("/404")
-	public String showPageNotFound() {
-		return "pageNotFound";
-	}
-	@GetMapping("/errorPage")
-	public String showErrorPage() {
-		return "errorPage";
-	}
-
 }
