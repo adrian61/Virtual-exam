@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
@@ -15,7 +14,6 @@ public class CustomErrorController implements ErrorController {
 	public ModelAndView handleError(HttpServletResponse response) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("errorMsg", response.getStatus());
-
 		if(response.getStatus() == HttpStatus.NOT_FOUND.value()) {
 			modelAndView.setViewName("pageNotFound");
 		}
@@ -25,7 +23,6 @@ public class CustomErrorController implements ErrorController {
 		else {
 			modelAndView.setViewName("errorPage");
 		}
-
 		return modelAndView;
 	}
 

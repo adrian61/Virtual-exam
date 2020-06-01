@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:form="http://www.w3.org/1999/html">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/meta.html"></head>
 <head>
-    <title>Error!!!</title>
+    <title>Page not found</title>
 </head>
 
 
@@ -12,26 +11,20 @@
     <div class="card shadow-lg">
         <div class="row">
             <div class="col">
-                <div class="text-center display-4 m-1">Something went wrong!</div>
+                <div class="text-center display-4 m-1">Page not found.</div>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <div class="text-center display-4 m-1">Error code:</div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="text-center display-4 m-1" th:text="${errorMsg != null} ? ${errorMsg}" >Unknown error</div>
+                <div class="text-center display-4 m-1">Nothing here.</div>
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <div class="text-center m-4 h1 font-weight-light ">
-                    <a href="/"><u>Back to main page.</u></a>
+                    <a href="/"><u>Be gone.</u></a>
                 </div>
             </div>
         </div>
@@ -40,14 +33,14 @@
             <div class="col-10"></div>
             <div class="col">
                 <div class="">
-                    <img class="img-responsive" src="images/pika.png" alt="pika">
+                    <img class="img-responsive" src="../../static/images/pika.png" alt="pika">
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div th:include="fragments/bootstrap-scripts.html"></div>
 
+<div th:include="fragments/bootstrap-scripts.html"></div>
 </body>
 
 </html>
