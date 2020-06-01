@@ -15,13 +15,13 @@ public class CustomErrorController implements ErrorController {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("errorMsg", response.getStatus());
 		if(response.getStatus() == HttpStatus.NOT_FOUND.value()) {
-			modelAndView.setViewName("pageNotFound");
+			modelAndView.setViewName("errors/pageNotFound");
 		}
 		else if(response.getStatus() == HttpStatus.FORBIDDEN.value()) {
 			modelAndView.setViewName("accessDenied");
 		}
 		else {
-			modelAndView.setViewName("errorPage");
+			modelAndView.setViewName("errors/errorPage");
 		}
 		return modelAndView;
 	}
