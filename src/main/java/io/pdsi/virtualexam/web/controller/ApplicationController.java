@@ -143,5 +143,9 @@ public class ApplicationController {
 	public String showPageNotFound() {
 		return "pageNotFound";
 	}
+	@GetMapping("/errorPage")
+	public String showErrorPage() {
+		return "errorPage";
+	}
 
 }
