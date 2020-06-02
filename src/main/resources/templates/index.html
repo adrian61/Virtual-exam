@@ -103,12 +103,61 @@
                         </div>
                     </form>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">New around here? Sign up</a>
+                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#modalRegisterForm">New around here? Sign up</a>
                     <a class="dropdown-item" href="#">Forgot password?</a>
                 </div>
                 <div sec:authorize="isAuthenticated()">
                     <a class="btn-lg btn-danger flat" href="/logout" role="button"><i
                             class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div style="margin:25px">
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                            </div>
+                            <input type="text" name="login" placeholder="Your login" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="text" name="password_A" placeholder="Your password" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="text" name="password_B" placeholder="Repeat your password" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user "></i></span>
+                            </div>
+                            <input type="text" name="name" placeholder="Your name (optional)" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                            </div>
+                            <input type="text" name="surname" placeholder="Your surname (optional)" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-success">Sign up</button>
+                    </div>
                 </div>
             </div>
         </div>
