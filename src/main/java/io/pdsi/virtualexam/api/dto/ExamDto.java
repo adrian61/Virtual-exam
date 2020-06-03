@@ -2,6 +2,7 @@ package io.pdsi.virtualexam.api.dto;
 
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

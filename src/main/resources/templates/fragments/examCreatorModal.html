@@ -42,14 +42,6 @@
                         </p>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Time (minutes):</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="modal-input" type="number" placeholder="60">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm">
                                 <label class="modal-input-label">Number of groups:</label>
                             </div>
                             <div class="col-sm">
@@ -61,15 +53,16 @@
                                 <label class="modal-input-label">Begin date:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="date" placeholder="DD/MM/YYYY">
+                                <input class="modal-input" type="datetime-local" placeholder="24:00" th:field="*{startDate}"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm">
-                                <label class="modal-input-label">Begin time:</label>
+                                <label class="modal-input-label">End date:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="datetime-local" placeholder="12:00">
+                                <input class="modal-input" type="datetime-local" placeholder="24:00"
+                                       th:field="*{endDate}">
                             </div>
                         </div>
                         <div id="files-for-groups" style="margin-top: 40px;">
@@ -77,9 +70,7 @@
                                 <label class="group-label">Group 1</label>
                                 <div class="col-sm">
                                     <div class="upload-files-button">
-                                        <button class="btn btn-primary">
-                                            Choose files...
-                                        </button>
+                                        <input type="file" name="file" class="form-control-file">
                                     </div>
                                 </div>
                                 <div class="col-sm">
@@ -108,12 +99,10 @@
             for(var i = 0; i < $(this).val(); i++) {
                 $("#files-for-groups").append(
                     "<div class=\"row drag-files\">\n" +
-                    "    <label class=\"group-label\">Group" + (i + 1) + "</label>\n" +
+                    "    <label class=\"group-label\">Group " + (i + 1) + "</label>\n" +
                     "    <div class=\"col-sm\">\n" +
                     "        <div class=\"upload-files-button\">\n" +
-                    "            <button class=\"btn btn-primary\">\n" +
-                    "                Choose files...\n" +
-                    "            </button>\n" +
+                    "              <input type=\"file\" name=\"file\" class=\"form-control-file\">" +
                     "        </div>\n" +
                     "    </div>\n" +
                     "    <div class=\"col-sm\">\n" +

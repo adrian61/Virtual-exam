@@ -71,6 +71,7 @@ public class ApplicationController {
 
 	@PostMapping(value = "/createExam")
 	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, @Valid @ModelAttribute("exam") ExamDto exam, BindingResult result, HttpServletRequest request) {
+		System.out.println(exam.getStartDate());
 		if (result.hasErrors()) {
 			//TODO sometimes not working, should be repaired
 			String referrer = request.getHeader("referer");
@@ -81,9 +82,6 @@ public class ApplicationController {
 		}
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
-			//implemented for a moment cuz probably createColloquiumModal will be refactored
-			exam.setStartDate(ZonedDateTime.now());
-			exam.setEndDate(ZonedDateTime.now());
 			examService.saveExamForExaminer(exam, loggedUser);
 		} catch (NullPointerException e) {
 			log.error("User not found");
