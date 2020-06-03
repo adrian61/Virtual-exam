@@ -77,12 +77,13 @@ public class ApplicationController {
 	                                   @RequestParam("file") MultipartFile file,
 	                                   @RequestParam("title") String title,
 	                                   @RequestParam("password") String password,
-	                                   @RequestParam("startDate") ZonedDateTime startDate,
+	                                   @RequestParam("startDate") String startDate,
 	                                   @RequestParam("endDate") ZonedDateTime endDate,
 	                                   HttpServletRequest request) {
+		System.out.println(startDate);
 		String fileName = fileStorageService.storeFile(file);
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/downloadFile/")
+				.path("/upload/downloadFile/")
 				.path(fileName)
 				.toUriString();
 		System.out.println(fileDownloadUri);
@@ -91,7 +92,7 @@ public class ApplicationController {
 			ExamDto exam = ExamDto.builder()
 					.title(title)
 					.password(password)
-					.startDate(startDate)
+					//.startDate(startDate)
 					.endDate(endDate)
 					.build();
 			examService.saveExamForExaminer(exam, loggedUser);
