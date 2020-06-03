@@ -1,8 +1,8 @@
 package io.pdsi.virtualexam.web.service;
 
-import com.example.filedemo.exception.FileStorageException;
-import com.example.filedemo.exception.MyFileNotFoundException;
-import com.example.filedemo.property.FileStorageProperties;
+import io.pdsi.virtualexam.web.exception.FileStorageException;
+import io.pdsi.virtualexam.web.exception.FileNotFoundException;
+import io.pdsi.virtualexam.web.storage.StorageConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -20,8 +20,8 @@ public class FileStorageService {
 	private final Path fileStorageLocation;
 
 	@Autowired
-	public FileStorageService(FileStorageProperties fileStorageProperties) {
-		this.fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir())
+	public FileStorageService(StorageConfiguration fileStorageProperties) {
+		this.fileStorageLocation = Paths.get(fileStorageProperties.getLocation())
 				.toAbsolutePath().normalize();
 
 		try {
@@ -58,10 +58,10 @@ public class FileStorageService {
 			if (resource.exists()) {
 				return resource;
 			} else {
-				throw new MyFileNotFoundException("File not found " + fileName);
+				throw new FileNotFoundException("File not found " + fileName);
 			}
 		} catch (MalformedURLException ex) {
-			throw new MyFileNotFoundException("File not found " + fileName, ex);
+			throw new FileNotFoundException("File not found " + fileName, ex);
 		}
 	}
 }
