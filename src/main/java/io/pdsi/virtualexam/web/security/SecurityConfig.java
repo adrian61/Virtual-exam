@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/", "/resources/**").permitAll()
 				.antMatchers("/examListPanel").hasAnyRole("USER")
 				.antMatchers("/uploadFile").permitAll()
+				.antMatchers("/downloadFile/**").permitAll()
 				.and()
 				.formLogin().loginPage("/").loginProcessingUrl("/auth_user").permitAll()
 				.and()
