@@ -138,4 +138,9 @@ public class ApplicationController {
 	public String showAccessDenied() {
 		return "accessDenied";
 	}
+
+	@GetMapping("/uploadForm")
+	public String showUploadForm() {
+		return "uploadform";
+	}
 }
