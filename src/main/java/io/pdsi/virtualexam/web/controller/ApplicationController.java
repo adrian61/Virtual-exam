@@ -4,6 +4,7 @@ import io.pdsi.virtualexam.api.dto.ExamDto;
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
 import io.pdsi.virtualexam.web.service.ExamService;
 import io.pdsi.virtualexam.web.service.ExaminerService;
+import io.pdsi.virtualexam.web.service.FileStorageService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -11,14 +12,14 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +37,7 @@ import java.util.stream.Collectors;
 public class ApplicationController {
 	private final ExaminerService examinerService;
 	private final ExamService examService;
+	private final FileStorageService fileStorageService;
 
 
 	@GetMapping(value = "/")
@@ -69,19 +71,29 @@ public class ApplicationController {
 		return "index";
 	}
 
+
 	@PostMapping(value = "/createExam")
-	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails, @Valid @ModelAttribute("exam") ExamDto exam, BindingResult result, HttpServletRequest request) {
-		System.out.println(exam.getStartDate());
-		if (result.hasErrors()) {
-			//TODO sometimes not working, should be repaired
-			String referrer = request.getHeader("referer");
-			if (referrer.equals("http://localhost:8083/examListPanel"))
-				return "examListPanel";
-			else
-				return "index";
-		}
+	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails,
+	                                   @RequestParam("file") MultipartFile file,
+	                                   @RequestParam("title") String title,
+	                                   @RequestParam("password") String password,
+	                                   @RequestParam("startDate") ZonedDateTime startDate,
+	                                   @RequestParam("endDate") ZonedDateTime endDate,
+	                                   HttpServletRequest request) {
+		String fileName = fileStorageService.storeFile(file);
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/downloadFile/")
+				.path(fileName)
+				.toUriString();
+		System.out.println(fileDownloadUri);
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
+			ExamDto exam = ExamDto.builder()
+					.title(title)
+					.password(password)
+					.startDate(startDate)
+					.endDate(endDate)
+					.build();
 			examService.saveExamForExaminer(exam, loggedUser);
 		} catch (NullPointerException e) {
 			log.error("User not found");
@@ -95,7 +107,6 @@ public class ApplicationController {
 
 		return "redirect:/";
 	}
-
 	//TODO Added temporarily
 	@GetMapping(value = "/studentExamView")
 	public String showStudentExamView() {

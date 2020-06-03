@@ -4,7 +4,7 @@
     <style scoped>
         @import "css/modal.css";
     </style>
-    <form th:action="@{/createExam}" th:object="${exam}" method="post">
+    <form method="post" th:action="@{/createExam?_csrf.parameterName=_csrf.token}" enctype="multipart/form-data">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" style="border-radius: 15px;">
                 <div class="modal-header">
@@ -21,8 +21,7 @@
                                 <label class="modal-input-label">Title:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="text" placeholder="Exam title" name="title"
-                                       th:field="*{title}">
+                                <input class="modal-input" type="text" placeholder="Exam title" name="title">
                             </div>
                         </div>
                         <div class="row">
@@ -30,15 +29,10 @@
                                 <label class="modal-input-label">Password:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="password" placeholder="-" name="password"
-                                       th:field="*{password}">
+                                <input class="modal-input" type="password" placeholder="-" name="password">
                             </div>
                         </div>
                         <p id="errormsg">
-                        <div class="row" th:if="${#fields.hasErrors('password')}">
-                            <div class="col-sm"></div>
-                            <div class="col-sm alert alert-danger" th:errors="*{password}"></div>
-                        </div>
                         </p>
                         <div class="row">
                             <div class="col-sm">
@@ -53,7 +47,7 @@
                                 <label class="modal-input-label">Begin date:</label>
                             </div>
                             <div class="col-sm">
-                                <input class="modal-input" type="datetime-local" placeholder="24:00" th:field="*{startDate}"/>
+                                <input class="modal-input" type="datetime-local" placeholder="24:00" name="startDate"/>
                             </div>
                         </div>
                         <div class="row">
@@ -62,7 +56,7 @@
                             </div>
                             <div class="col-sm">
                                 <input class="modal-input" type="datetime-local" placeholder="24:00"
-                                       th:field="*{endDate}">
+                                       name="endDate">
                             </div>
                         </div>
                         <div id="files-for-groups" style="margin-top: 40px;">

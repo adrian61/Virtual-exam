@@ -2,7 +2,7 @@ package io.pdsi.virtualexam.api.dto;
 
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -21,6 +21,7 @@ public class ExamDto {
 	private String password;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;
+	private MultipartFile file;
 
 
 	public static ExamDto fromEntity(Exam exam) {
