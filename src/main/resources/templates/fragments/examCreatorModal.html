@@ -53,7 +53,7 @@
                                 <label class="modal-input-label">Number of groups:</label>
                             </div>
                             <div class="col-sm">
-                                <input id="numberOfGroups" name="numberOfGroups" class="modal-input" type="number" placeholder="0" value="0">
+                                <input id="numberOfGroups" name="numberOfGroups" class="modal-input" type="number" min="1" max="10" placeholder="1" value="1">
                             </div>
                         </div>
                         <div class="row">
@@ -73,7 +73,19 @@
                             </div>
                         </div>
                         <div id="files-for-groups" style="margin-top: 40px;">
-
+                            <div class="row drag-files">
+                                <label class="group-label">Group 1</label>
+                                <div class="col-sm">
+                                    <div class="upload-files-button">
+                                        <button class="btn btn-primary">
+                                            Choose files...
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <em class="vertical-center"><small>or drag files here</small></em>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,19 +106,21 @@
         $("#numberOfGroups").on("change paste keyup", function() {
             $("#files-for-groups").empty();
             for(var i = 0; i < $(this).val(); i++) {
-                $("#files-for-groups").append("<div class=\"row drag-files\">\n" +
-                    "                                <label class=\"group-label\">Group " + (i + 1) + "</label>\n" +
-                    "                                <div class=\"col-sm\">\n" +
-                    "                                    <div class=\"upload-files-button\">\n" +
-                    "                                        <button class=\"btn btn-primary\"><img th:src=\"@{/images/icons/upload.png}\"\n" +
-                    "                                                                             class=\"icon\">Choose files...\n" +
-                    "                                        </button>\n" +
-                    "                                    </div>\n" +
-                    "                                </div>\n" +
-                    "                                <div class=\"col-sm\">\n" +
-                    "                                    <em class=\"vertical-center\"><small>or drag files here</small></em>\n" +
-                    "                                </div>\n" +
-                    "                            </div>");
+                $("#files-for-groups").append(
+                    "<div class=\"row drag-files\">\n" +
+                    "    <label class=\"group-label\">Group" + (i + 1) + "</label>\n" +
+                    "    <div class=\"col-sm\">\n" +
+                    "        <div class=\"upload-files-button\">\n" +
+                    "            <button class=\"btn btn-primary\">\n" +
+                    "                Choose files...\n" +
+                    "            </button>\n" +
+                    "        </div>\n" +
+                    "    </div>\n" +
+                    "    <div class=\"col-sm\">\n" +
+                    "        <em class=\"vertical-center\"><small>or drag files here</small></em>\n" +
+                    "    </div>\n" +
+                    "</div>"
+                );
             }
         });
     });
