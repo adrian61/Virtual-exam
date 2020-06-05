@@ -20,10 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.Date;
@@ -78,31 +75,31 @@ public class ApplicationController {
 	                                   @RequestParam("title") String title,
 	                                   @RequestParam("password") String password,
 	                                   @RequestParam("startDate") String startDate,
-	                                   @RequestParam("endDate") ZonedDateTime endDate,
+	                                   @RequestParam("endDate") String endDate,
 	                                   HttpServletRequest request) {
-		System.out.println(startDate);
+		LocalDateTime localStartDate = LocalDateTime.parse(startDate);
+		ZonedDateTime zonedStartDate = localStartDate.atZone(ZoneId.of("GMT+00:00"));
+		LocalDateTime localEndDate = LocalDateTime.parse(endDate);
+		ZonedDateTime zonedEndDate = localEndDate.atZone(ZoneId.of("GMT+00:00"));
 		String fileName = fileStorageService.storeFile(file);
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
 				.path("/upload/downloadFile/")
 				.path(fileName)
 				.toUriString();
-		System.out.println(fileDownloadUri);
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
 			ExamDto exam = ExamDto.builder()
 					.title(title)
 					.password(password)
-					//.startDate(startDate)
-					.endDate(endDate)
+					.startDate(zonedStartDate)
+					.endDate(zonedEndDate)
 					.build();
 			examService.saveExamForExaminer(exam, loggedUser);
 		} catch (NullPointerException e) {
 			log.error("User not found");
-			//TODO maybe in the future we can add warning alert with message
 			return "redirect:/";
 		} catch (DataAccessException e) {
 			log.error(e.getLocalizedMessage());
-			//TODO maybe in the future we can add warning alert with message
 			return "redirect:/";
 		}
 
@@ -117,7 +114,6 @@ public class ApplicationController {
 	@GetMapping(value = "/examListPanel")
 	public String showTeacherExamListPanel(@AuthenticationPrincipal UserDetails userDetails, Model model) {
 		if (userDetails != null) {
-			//Here should works cast but idk why not working Examiner ex = (Examiner) UserDetails
 			Examiner examiner = Examiner.builder()
 					.login(userDetails.getUsername())
 					.password(userDetails.getPassword())
