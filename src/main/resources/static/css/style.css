@@ -4,6 +4,17 @@ body {
     /*background-color: #af4e4c;*/
 }
 
+.file-row {
+    margin-bottom: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.file-group {
+    padding: 0.5rem;
+    background-color: #F0F0F0;
+    border-radius: 4px;
+}
+
 .font-main {
     font-family: Overlock SC, fantasy;
 }
