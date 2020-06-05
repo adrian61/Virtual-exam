@@ -20,7 +20,8 @@ public class ExamDto {
 	private String password;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;
-
+	private String _startDate;
+	private String _endDate;
 
 	public static ExamDto fromEntity(Exam exam) {
 		return ExamDto.builder()
