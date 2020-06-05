@@ -14,10 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -136,6 +133,7 @@ public class ApplicationController {
 			List<ExamDto> examDtoList = examService.getExamsByExaminer(examiner);
 			model.addAttribute("examList", examDtoList);
 			model.addAttribute("exam", new ExamDto());
+			model.addAttribute("examToExamPanel", new ExamDto());
 		} else {
 			log.error("User not found");
 		}
@@ -143,8 +141,10 @@ public class ApplicationController {
 	}
 
 	//TODO Added temporarily
-	@GetMapping(value = "/examPanel")
-	public String showTeacherPanel() {
+	@PostMapping(value = "/examPanel")
+	public String showTeacherPanel(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute("exam") ExamDto exam, Model model) {
+		if (exam == null || userDetails == null) return "redirect:/";
+		model.addAttribute(exam);
 		return "examPanel";
 	}
 
@@ -159,8 +159,4 @@ public class ApplicationController {
 		return "accessDenied";
 	}
 
-	@GetMapping("/uploadForm")
-	public String showUploadForm() {
-		return "uploadform";
-	}
 }

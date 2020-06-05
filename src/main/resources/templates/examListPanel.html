@@ -50,10 +50,15 @@
                             <td class="table-cell"
                                 th:text="${exam.getEndDate().toLocalDate()} + ' ' + ${exam.getEndDate().toLocalTime()}"></td>
                             <td class="table-cell">
-                                <form ACTION="#" th:action="@{/examPanel}" th:object="${exam}" method="POST">
+                                <form th:action="@{/examPanel}" th:object="${examToExamPanel}" method="POST">
+                                    <input type="hidden" th:value="${exam.getId()}" name="id"/>
+                                    <input type="hidden" th:value="${exam.getTitle()}" name="title"/>
+                                    <input type="hidden" th:value="${exam.getPassword()}" name="password"/>
+                                    <input type="hidden" th:value="${exam.getStartDate()}" name="startDate"/>
+                                    <input type="hidden" th:value="${exam.getEndDate()}" name="endDate"/>
                                     <button type="submit">Link</button>
                                 </form>
-                                </a></td>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
