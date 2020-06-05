@@ -37,18 +37,24 @@
                         <thead>
                             <tr class="table-head-row table-row">
                                 <th class="table-cell">Name</th>
-                                <th class="table-cell">Date</th>
-                                <th class="table-cell">Time</th>
+                                <th class="table-cell">Start Date</th>
+                                <th class="table-cell">End Date</th>
                                 <th class="table-cell">Access</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="table-row" th:each="exam : ${examList}">
-                                <td class="table-cell" th:text="${exam.getTitle()}"></td>
-                                <td class="table-cell" th:text="${exam.getStartDate().toLocalDate()}"></td>
-                                <td class="table-cell" th:text="${exam.getStartDate().toLocalTime()}"></td>
-                                <td class="table-cell">LINK</td>
-                            </tr>
+                        <tr class="table-row" th:each="exam : ${examList}">
+                            <td class="table-cell" th:text="${exam.getTitle()}"></td>
+                            <td class="table-cell"
+                                th:text="${exam.getStartDate().toLocalDate()} + ' ' + ${exam.getStartDate().toLocalTime()}"></td>
+                            <td class="table-cell"
+                                th:text="${exam.getEndDate().toLocalDate()} + ' ' + ${exam.getEndDate().toLocalTime()}"></td>
+                            <td class="table-cell">
+                                <form ACTION="#" th:action="@{/examPanel}" th:object="${exam}" method="POST">
+                                    <button type="submit">Link</button>
+                                </form>
+                                </a></td>
+                        </tr>
                         </tbody>
                     </table>
                     <!--<div class="row ">
