@@ -150,7 +150,13 @@ public class ApplicationController {
 		List<StudentEntry> participantList = studentEntryService.findByExamId(exam.toEntity());
 		model.addAttribute("exam", examDto);
 		model.addAttribute("standardDate", new Date());
-		model.addAttribute("timeLeft", Duration.between(examDto.getEndDate(), ZonedDateTime.now()));
+		Duration duration = Duration.between(examDto.getEndDate(), ZonedDateTime.now());
+		long seconds = Math.abs(duration.getSeconds());
+		model.addAttribute("timeLeft", String.format(
+				"%d:%02d:%02d",
+				seconds / 3600,
+				(seconds % 3600) / 60,
+				seconds % 60));
 		model.addAttribute("pathList", pathListForExam);
 		model.addAttribute("participantList", participantList);
 		return "examPanel";
