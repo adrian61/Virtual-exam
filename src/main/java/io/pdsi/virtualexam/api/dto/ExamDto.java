@@ -20,6 +20,7 @@ public class ExamDto {
 	private String password;
 	private ZonedDateTime startDate;
 	private ZonedDateTime endDate;
+	//Used to send date by forms
 	private String _startDate;
 	private String _endDate;
 

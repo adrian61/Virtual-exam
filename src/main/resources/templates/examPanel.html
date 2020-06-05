@@ -21,14 +21,15 @@
                     </div>
                     <div class="col p-0">
                         <div class="exam-header">
-                            <div id="exam-name">Exam_name</div>
+                            <div id="exam-name" th:text="${exam.getTitle()}"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row left-panel">
                     <div class="col">
                         <div class="row">
-                            <span id="clock" class="center-block font-weight-light">21:37 | Mon, May 21 2020</span>
+                            <span id="clock" class="center-block font-weight-light"
+                                  th:text="${#dates.format(standardDate, 'HH:mm | MMM dd yyyy')}"></span>
                         </div>
                         <div class="row center-block horizontal-line"></div>
                         <div class="row">
@@ -46,7 +47,8 @@
                         <div class="row center-block horizontal-line"></div>
                         <div class="row">
                             <div class="center-block" style="line-height: 80px">
-                                <span id="time-left">Time left: 11:26</span>
+                                <span id="time-left"
+                                      th:text="'Time left: ' + ${timeLeft.toHoursPart()}+':'+${timeLeft.toMinutesPart()}+ ':' + ${timeLeft.toSecondsPart()}"></span>
                             </div>
                         </div>
                         <div class="row">

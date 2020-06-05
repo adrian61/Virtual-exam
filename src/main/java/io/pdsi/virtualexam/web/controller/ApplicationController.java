@@ -19,7 +19,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.*;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,9 +44,6 @@ public class ApplicationController {
 	@GetMapping(value = "/")
 	public String showHomePage(@AuthenticationPrincipal UserDetails userDetails, Model model) {
 		model.addAttribute("standardDate", new Date());
-		model.addAttribute("localDateTime", LocalDateTime.now());
-		model.addAttribute("localDate", LocalDate.now());
-		model.addAttribute("timestamp", Instant.now());
 		model.addAttribute("exam", new ExamDto());
 		if (userDetails != null) {
 			Examiner examiner = Examiner.builder()
@@ -144,7 +144,12 @@ public class ApplicationController {
 	@PostMapping(value = "/examPanel")
 	public String showTeacherPanel(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute("exam") ExamDto exam, Model model) {
 		if (exam == null || userDetails == null) return "redirect:/";
-		model.addAttribute(exam);
+		ExamDto examDto = ExamDto.fromEntity(examService.getExam(exam.getId()));
+		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return "redirect:/";
+		model.addAttribute("exam", examDto);
+		model.addAttribute("standardDate", new Date());
+		model.addAttribute("timeLeft", Duration.between(examDto.getEndDate(), ZonedDateTime.now()));
+
 		return "examPanel";
 	}
 
