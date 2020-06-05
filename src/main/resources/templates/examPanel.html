@@ -85,13 +85,19 @@
                         <div class="row">
                             <div id="participants">
                                 <table>
-                                    <tr>
-                                        <td>231253</td>
-                                        <td>Angela Merkel</td>
+                                    <tr th:each=" participant : ${participantList}">
+                                        <td th:text="${participant.getIndex()}"></td>
+                                        <td th:text="${participant.getFirstName()} + ' ' + ${participant.getLastName()}">
+                                        </td>
                                         <td>10:21:57</td>
-                                        <td>Gr. A</td>
+                                        <td th:text="'Gr. '+${participant.getGroup()}"></td>
                                         <td class="table-checkmark">
-                                            <img src="images/icons/checkmark-green.png" class="checkmark-icon">
+                                            <div th:if="${participant.getDone()} == true">
+                                                <img src="images/icons/checkmark-green.png" class="checkmark-icon">
+                                            </div>
+                                            <div th:unless="${participant.getDone()} == true">
+                                                <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
+                                            </div>
                                         </td>
                                         <td class="table-button red">
                                             <img src="images/icons/delete.png" class="button-icon">
@@ -100,79 +106,8 @@
                                             <img src="images/icons/timer.png" class="button-icon">
                                         </td>
                                         <td class="table-button blue">
-                                            <img src="images/icons/download2.png" class="button-icon">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>231253</td>
-                                        <td>Angela Merkel</td>
-                                        <td>10:21:57</td>
-                                        <td>Gr. A</td>
-                                        <td class="table-checkmark">
-                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
-                                        </td>
-                                        <td class="table-button red">
-                                            <img src="images/icons/delete.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button yellow">
-                                            <img src="images/icons/timer.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button blue">
-                                            <img src="images/icons/download2.png" class="button-icon">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>231253</td>
-                                        <td>Angela Merkel</td>
-                                        <td>10:21:57</td>
-                                        <td>Gr. A</td>
-                                        <td class="table-checkmark">
-                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
-                                        </td>
-                                        <td class="table-button red">
-                                            <img src="images/icons/delete.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button yellow">
-                                            <img src="images/icons/timer.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button blue">
-                                            <img src="images/icons/download2.png" class="button-icon">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>231253</td>
-                                        <td>Angela Merkel</td>
-                                        <td>10:21:57</td>
-                                        <td>Gr. A</td>
-                                        <td class="table-checkmark">
-                                            <img src="images/icons/checkmark-green.png" class="checkmark-icon">
-                                        </td>
-                                        <td class="table-button red">
-                                            <img src="images/icons/delete.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button yellow">
-                                            <img src="images/icons/timer.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button blue">
-                                            <img src="images/icons/download2.png" class="button-icon">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>231253</td>
-                                        <td>Angela Merkel</td>
-                                        <td>10:21:57</td>
-                                        <td>Gr. A</td>
-                                        <td class="table-checkmark">
-                                            <img src="images/icons/checkmark-empty.png" class="checkmark-icon">
-                                        </td>
-                                        <td class="table-button red">
-                                            <img src="images/icons/delete.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button yellow">
-                                            <img src="images/icons/timer.png" class="button-icon">
-                                        </td>
-                                        <td class="table-button blue">
-                                            <img src="images/icons/download2.png" class="button-icon">
+                                            <a th:href="${participant.getPath()}"> <img src="images/icons/download2.png"
+                                                                                        class="button-icon"></a>
                                         </td>
                                     </tr>
                                 </table>

@@ -4,10 +4,8 @@ import io.pdsi.virtualexam.api.dto.ExamDto;
 import io.pdsi.virtualexam.api.dto.ExamPathDto;
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
-import io.pdsi.virtualexam.web.service.ExamPathService;
-import io.pdsi.virtualexam.web.service.ExamService;
-import io.pdsi.virtualexam.web.service.ExaminerService;
-import io.pdsi.virtualexam.web.service.FileStorageService;
+import io.pdsi.virtualexam.core.jpa.entity.StudentEntry;
+import io.pdsi.virtualexam.web.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -40,6 +38,7 @@ public class ApplicationController {
 	private final ExamService examService;
 	private final FileStorageService fileStorageService;
 	private final ExamPathService examPathService;
+	private final StudentEntryService studentEntryService;
 
 
 	@GetMapping(value = "/")
@@ -148,10 +147,12 @@ public class ApplicationController {
 		ExamDto examDto = ExamDto.fromEntity(examService.getExam(exam.getId()));
 		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return "redirect:/";
 		List<ExamPathDto> pathListForExam = examPathService.getGroupsForExam(exam.getId());
+		List<StudentEntry> participantList = studentEntryService.findByExamId(exam.toEntity());
 		model.addAttribute("exam", examDto);
 		model.addAttribute("standardDate", new Date());
 		model.addAttribute("timeLeft", Duration.between(examDto.getEndDate(), ZonedDateTime.now()));
 		model.addAttribute("pathList", pathListForExam);
+		model.addAttribute("participantList", participantList);
 		return "examPanel";
 	}
 

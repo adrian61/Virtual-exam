@@ -28,6 +28,17 @@ public class StudentEntry extends BaseEntity {
 
 	@Column(name = "last_name")
 	private String lastName;
+	@Column(name = "group")
+	private String group;
+
+	@Column(name = "done")
+	private Boolean done;
+
+	@Column(name = "extra_time")
+	private Integer extraTime;
+
+	@Column(name = "path")
+	private String path;
 
 	@Column(name = "finish_date")
 	private ZonedDateTime finishDate;

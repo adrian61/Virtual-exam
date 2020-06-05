@@ -1,5 +1,6 @@
 package io.pdsi.virtualexam.web.service;
 
+import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.core.jpa.entity.StudentEntry;
 import io.pdsi.virtualexam.core.jpa.repository.StudentEntryRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,5 +16,10 @@ public class StudentEntryServiceImpl implements StudentEntryService {
 	@Override
 	public List<StudentEntry> findAll() {
 		return studentEntryRepository.findAll();
+	}
+
+	@Override
+	public List<StudentEntry> findByExamId(Exam exam) {
+		return studentEntryRepository.findAllByExam(exam);
 	}
 }
