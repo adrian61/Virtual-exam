@@ -1,110 +1,88 @@
-<div class="modal fade" id="createColloquiumModal" tabindex="-1" role="dialog"
-     aria-labelledby="createColloquiumModalLabel"
-     aria-hidden="true">
-    <style scoped>
-        @import "css/modal.css";
-    </style>
-    <form method="post" th:action="@{/createExam?_csrf.parameterName=_csrf.token}" enctype="multipart/form-data">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content" style="border-radius: 15px;">
-                <div class="modal-header">
-                    <div class="center-block" id="modal-title">Create exam</div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="modal-input-label">Title:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="modal-input" type="text" placeholder="Exam title" name="title">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="modal-input-label">Password:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="modal-input" type="password" placeholder="-" name="password">
-                            </div>
-                        </div>
-                        <p id="errormsg">
-                        </p>
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="modal-input-label">Number of groups:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input id="numberOfGroups" name="numberOfGroups" class="modal-input" type="number" min="1" max="10" placeholder="1" value="1">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="modal-input-label">Begin date:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="modal-input" type="datetime-local" placeholder="24:00" name="startDate"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm">
-                                <label class="modal-input-label">End date:</label>
-                            </div>
-                            <div class="col-sm">
-                                <input class="modal-input" type="datetime-local" placeholder="24:00"
-                                       name="endDate">
-                            </div>
-                        </div>
-                        <div id="files-for-groups" style="margin-top: 40px;">
-                            <div class="row drag-files">
-                                <label class="group-label">Group 1</label>
-                                <div class="col-sm">
-                                    <div class="upload-files-button">
-                                        <input type="file" name="file" class="form-control-file">
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-                                    <em class="vertical-center"><small>or drag files here</small></em>
-                                </div>
-                            </div>
+<div class="modal fade" id="createColloquiumModal" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Exam creator</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="examCreatorForm" method="post" th:action="@{/createExam?_csrf.parameterName=_csrf.token}" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-4 col-form-label">Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="title" name="title">
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn done-button center-block"><img
-                            th:src="@{/images/icons/checkmark-green.png}"
-                            class="done-icon">Confirm
-                    </button>
-                </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password" placeholder="Leave empty for no password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="numberOfGroups" class="col-sm-4 col-form-label">Number of groups</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="numberOfGroups" name="numberOfGroups" min="1" max="10" placeholder="2" value="2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="startDate" class="col-sm-4 col-form-label">Begin date</label>
+                        <div class="col-sm-8">
+                            <input type="datetime-local" class="form-control" id="startDate" name="startDate" placeholder="HH:MM">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="endDate" class="col-sm-4 col-form-label">End date</label>
+                        <div class="col-sm-8">
+                            <input type="datetime-local" class="form-control" id="endDate" name="endDate" placeholder="HH:MM">
+                        </div>
+                    </div>
+                    <div id="files-for-groups" class="form-group file-group">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="examCreatorForm">Submit</button>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $("#numberOfGroups").on("change paste keyup", function() {
+    $(document).ready(function() {
+
+        function clamp(num, min, max) {
+            return num <= min ? min : num >= max ? max : num;
+        }
+
+        function refreshView() {
             $("#files-for-groups").empty();
-            for(var i = 0; i < $(this).val(); i++) {
-                $("#files-for-groups").append(
-                    "<div class=\"row drag-files\">\n" +
-                    "    <label class=\"group-label\">Group " + (i + 1) + "</label>\n" +
-                    "    <div class=\"col-sm\">\n" +
-                    "        <div class=\"upload-files-button\">\n" +
-                    "              <input type=\"file\" name=\"file\" class=\"form-control-file\">" +
-                    "        </div>\n" +
-                    "    </div>\n" +
-                    "    <div class=\"col-sm\">\n" +
-                    "        <em class=\"vertical-center\"><small>or drag files here</small></em>\n" +
-                    "    </div>\n" +
-                    "</div>"
-                );
+            var n = $("#numberOfGroups").val();
+            var groups = clamp(n, 1, 10);
+            for(var i = 0; i < groups; i++) {
+                var html = '<div class="row file-row">';
+                html += '<label for="file' + i + '" class="col-sm-4 col-form-label">Files group ' + (i + 1) + '</label>';
+                html += '<div class="col-sm-8">';
+                html += '<input type="file" name="file" id="file' + (i + 1) + '" class="form-control">';
+                html += '</div></div>';
+                $("#files-for-groups").append(html);
             }
-        });
+        }
+
+        refreshView();
+
+        function showModalHandler() {
+            $('#title').trigger('focus');
+        }
+
+        $('#createColloquiumModal').on('shown.bs.modal', showModalHandler);
+
+        $("#numberOfGroups").on("change paste keyup", refreshView);
+
     });
 </script>
