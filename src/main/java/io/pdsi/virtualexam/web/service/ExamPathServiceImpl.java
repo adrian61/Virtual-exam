@@ -17,7 +17,7 @@ public class ExamPathServiceImpl implements ExamPathService {
 		for (int i = 0; i < pathList.size(); i++) {
 			ExamPathDto examPath = ExamPathDto.builder()
 					.examId(examId)
-					.groupId(i)
+					.groupId(i + 1)
 					.path(pathList.get(i))
 					.build();
 			examPathRepository.save(examPath.toEntity());
