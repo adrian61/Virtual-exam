@@ -120,20 +120,121 @@
     </div>
 </div>
 
-<!--NAVIGATION BAR-->
+<!--NAVIGATION BAR (kod musi być na dole)-->
 <div class="navigation">
     <div class="row">
-        <div class="col pr-0 pl-3">
-            <button class="btn nav-button exam-hist-button">
+        <div class="col pr-0 pl-3" sec:authorize="isAuthenticated()">
+            <button class="btn nav-button exam-hist-button" onclick="location.href='/examListPanel'">
                 <i class="fas fa-graduation-cap fa-fw" aria-hidden="true"></i>
                 <span>Exam history</span>
             </button>
         </div>
         <div class="col-md-auto pr-0 pl-3">
-            <button class="btn nav-button account-button">
-                <i class="fas fa-user fa-fw" aria-hidden="true"></i>
-                <span>Account</span>
-            </button>
+            <a href="#" id="dropdownLogin" data-toggle="dropdown">
+                <button class="btn nav-button account-button">
+                    <i class="fas fa-user fa-fw" aria-hidden="true"></i>
+                    <span>Account</span>
+                </button>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <div sec:authorize="!isAuthenticated()">
+                    <form th:action="@{/auth_user}" method="POST" class="px-4 py-3">
+                        <div class="form-group">
+                            <div>
+                                <!-- Check for login error -->
+                                <div th:if="${param.error}">
+                                    <div class="alert alert-danger col-xs-offset-1 col-xs-10">
+                                        Invalid username and password.
+                                    </div>
+                                </div>
+                                <div th:if="${param.logout}">
+                                    <div class="alert alert-success col-xs-offset-1 col-xs-10">
+                                        You have been logged out.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                            </div>
+                            <input type="text" name="username" placeholder="username" class="form-control">
+                        </div>
+                        <!-- Password -->
+                        <div style="margin-bottom: 25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" placeholder="password" class="form-control">
+                        </div>
+                        <!-- Login/Submit Button -->
+                        <div style="margin-top: 10px" class="d-flex justify-content-center">
+                            <div class="controls">
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#modalRegisterForm">New around
+                        here? Sign up</a>
+                    <a class="dropdown-item" href="#">Forgot password?</a>
+                </div>
+                <div sec:authorize="isAuthenticated()">
+                    <a class="btn-lg btn-danger flat" href="/logout" role="button"><i
+                            class="fas fa-sign-out-alt"></i>Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div style="margin:25px">
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                            </div>
+                            <input type="text" name="login" placeholder="Your login" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="text" name="password_A" placeholder="Your password" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="text" name="password_B" placeholder="Repeat your password"
+                                   class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user "></i></span>
+                            </div>
+                            <input type="text" name="name" placeholder="Your name (optional)" class="form-control">
+                        </div>
+                        <div style="margin-bottom:25px" class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-user"></i></span>
+                            </div>
+                            <input type="text" name="surname" placeholder="Your surname (optional)"
+                                   class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-success">Sign up</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
