@@ -33,7 +33,6 @@ public class ExamController {
 
 	@GetMapping("/exam")
 	public List<ExamDto> handleGetExamByExaminerId(@AuthenticationPrincipal UserDetails userDetails) {
-		System.out.println("here");
 		if (userDetails != null) {
 			//Here should works cast but idk why not working Examiner ex = (Examiner) UserDetails
 			Examiner examiner = Examiner.builder()
@@ -41,11 +40,9 @@ public class ExamController {
 					.password(userDetails.getPassword())
 					.role(userDetails.getAuthorities().toString())
 					.build();
-			System.out.println("here2");
 
 			return examService.getExamsByExaminer(examiner);
 		}
-		System.out.println("her3e");
 		return null;
 	}
 
