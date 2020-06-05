@@ -1,11 +1,12 @@
 package io.pdsi.virtualexam.web.controller;
 
 import io.pdsi.virtualexam.api.dto.ExamDto;
+import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
+import io.pdsi.virtualexam.web.service.ExamPathService;
 import io.pdsi.virtualexam.web.service.ExamService;
 import io.pdsi.virtualexam.web.service.ExaminerService;
 import io.pdsi.virtualexam.web.service.FileStorageService;
-import io.pdsi.virtualexam.web.storage.payload.UploadFileResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -37,6 +38,7 @@ public class ApplicationController {
 	private final ExaminerService examinerService;
 	private final ExamService examService;
 	private final FileStorageService fileStorageService;
+	private final ExamPathService examPathService;
 
 
 	@GetMapping(value = "/")
@@ -84,7 +86,7 @@ public class ApplicationController {
 		ZonedDateTime zonedStartDate = localStartDate.atZone(ZoneId.of("GMT+00:00"));
 		LocalDateTime localEndDate = LocalDateTime.parse(endDate);
 		ZonedDateTime zonedEndDate = localEndDate.atZone(ZoneId.of("GMT+00:00"));
-		Arrays.stream(file)
+		List<String> paths = Arrays.stream(file)
 				.map(this::uploadFile)
 				.collect(Collectors.toList());
 		try {
@@ -96,6 +98,8 @@ public class ApplicationController {
 					.endDate(zonedEndDate)
 					.build();
 			examService.saveExamForExaminer(exam, loggedUser);
+			Exam examByExaminerAndTitle = examService.getExamByExaminerAndTitle(loggedUser, exam.getTitle());
+			examPathService.saveGroups(examByExaminerAndTitle.getId(), paths);
 		} catch (NullPointerException e) {
 			log.error("User not found");
 			return "redirect:/";
@@ -113,14 +117,12 @@ public class ApplicationController {
 		return "studentExamView";
 	}
 
-	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+	public String uploadFile(@RequestParam("file") MultipartFile file) {
 		String fileName = fileStorageService.storeFile(file);
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/downloadFile/")
+		return ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("upload/downloadFile/")
 				.path(fileName)
 				.toUriString();
-		return new UploadFileResponse(fileName, fileDownloadUri,
-				file.getContentType(), file.getSize());
 	}
 
 	@GetMapping(value = "/examListPanel")

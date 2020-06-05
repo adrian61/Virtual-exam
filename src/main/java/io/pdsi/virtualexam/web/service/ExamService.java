@@ -15,6 +15,7 @@ public interface ExamService {
 
 	Exam getExam(Integer id);
 
+	Exam getExamByExaminerAndTitle(Examiner examiner, String title);
 
 	List<ExamDto> getExamsByExaminer(Examiner examiner);
 
