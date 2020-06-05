@@ -5,6 +5,7 @@ import io.pdsi.virtualexam.core.jpa.entity.Examiner;
 import io.pdsi.virtualexam.web.service.ExamService;
 import io.pdsi.virtualexam.web.service.ExaminerService;
 import io.pdsi.virtualexam.web.service.FileStorageService;
+import io.pdsi.virtualexam.web.storage.payload.UploadFileResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -71,21 +73,20 @@ public class ApplicationController {
 
 	@PostMapping(value = "/createExam")
 	public String showExamCreatorModal(@AuthenticationPrincipal UserDetails userDetails,
-	                                   @RequestParam("file") MultipartFile file,
+	                                   @RequestParam("file") MultipartFile[] file,
 	                                   @RequestParam("title") String title,
 	                                   @RequestParam("password") String password,
 	                                   @RequestParam("startDate") String startDate,
 	                                   @RequestParam("endDate") String endDate,
 	                                   HttpServletRequest request) {
+		if (userDetails.getUsername() == null) return "redirect:/";
 		LocalDateTime localStartDate = LocalDateTime.parse(startDate);
 		ZonedDateTime zonedStartDate = localStartDate.atZone(ZoneId.of("GMT+00:00"));
 		LocalDateTime localEndDate = LocalDateTime.parse(endDate);
 		ZonedDateTime zonedEndDate = localEndDate.atZone(ZoneId.of("GMT+00:00"));
-		String fileName = fileStorageService.storeFile(file);
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("/upload/downloadFile/")
-				.path(fileName)
-				.toUriString();
+		Arrays.stream(file)
+				.map(this::uploadFile)
+				.collect(Collectors.toList());
 		try {
 			Examiner loggedUser = examinerService.findByLogin(userDetails.getUsername());
 			ExamDto exam = ExamDto.builder()
@@ -105,10 +106,21 @@ public class ApplicationController {
 
 		return "redirect:/";
 	}
+
 	//TODO Added temporarily
 	@GetMapping(value = "/studentExamView")
 	public String showStudentExamView() {
 		return "studentExamView";
+	}
+
+	public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+		String fileName = fileStorageService.storeFile(file);
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("/downloadFile/")
+				.path(fileName)
+				.toUriString();
+		return new UploadFileResponse(fileName, fileDownloadUri,
+				file.getContentType(), file.getSize());
 	}
 
 	@GetMapping(value = "/examListPanel")

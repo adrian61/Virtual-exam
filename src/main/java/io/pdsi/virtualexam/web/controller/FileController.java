@@ -29,9 +29,6 @@ public class FileController {
 
 	@PostMapping("/uploadFile")
 	public UploadFileResponse uploadFile(@AuthenticationPrincipal UserDetails userDetails, @RequestParam("file") MultipartFile file, @RequestParam("title") String title, @ RequestParam("password") String password) {
-		System.out.println(userDetails.getUsername());
-		System.out.println(title);
-		System.out.println(password);
 		String fileName = fileStorageService.storeFile(file);
 
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
