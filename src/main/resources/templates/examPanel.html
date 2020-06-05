@@ -60,23 +60,16 @@
 
                 <div class="row left-panel">
                     <div class="col">
-                        <div class="row">
-                            <span class="ml-3 mt-2">Gr. A</span>
-                        </div>
-                        <div class="row">
-                            <div class="center-block task-content">
-                                Exercise content
+                        <div th:each="path : ${pathList}">
+                            <div class="row">
+                                <span class="ml-3 mt-2" th:text="'Group '+ ${path.getGroupId()}"></span>
+                            </div>
+                            <div class="row">
+                                <div class="center-block task-content">
+                                    <button type="button"><a th:href="${path.getPath()}">Button Text</a></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <span class="ml-3 mt-2">Gr. B</span>
-                        </div>
-                        <div class="row">
-                            <div class="center-block task-content">
-                                Exercise content
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

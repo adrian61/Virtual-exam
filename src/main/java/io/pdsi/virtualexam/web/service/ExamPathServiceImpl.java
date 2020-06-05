@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -22,5 +23,13 @@ public class ExamPathServiceImpl implements ExamPathService {
 					.build();
 			examPathRepository.save(examPath.toEntity());
 		}
+	}
+
+	@Override
+	public List<ExamPathDto> getGroupsForExam(Integer examId) {
+		return examPathRepository.findAllByExamId(examId)
+				.stream()
+				.map(ExamPathDto::fromEntity)
+				.collect(Collectors.toList());
 	}
 }

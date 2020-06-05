@@ -1,6 +1,7 @@
 package io.pdsi.virtualexam.web.controller;
 
 import io.pdsi.virtualexam.api.dto.ExamDto;
+import io.pdsi.virtualexam.api.dto.ExamPathDto;
 import io.pdsi.virtualexam.core.jpa.entity.Exam;
 import io.pdsi.virtualexam.core.jpa.entity.Examiner;
 import io.pdsi.virtualexam.web.service.ExamPathService;
@@ -146,10 +147,11 @@ public class ApplicationController {
 		if (exam == null || userDetails == null) return "redirect:/";
 		ExamDto examDto = ExamDto.fromEntity(examService.getExam(exam.getId()));
 		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return "redirect:/";
+		List<ExamPathDto> pathListForExam = examPathService.getGroupsForExam(exam.getId());
 		model.addAttribute("exam", examDto);
 		model.addAttribute("standardDate", new Date());
 		model.addAttribute("timeLeft", Duration.between(examDto.getEndDate(), ZonedDateTime.now()));
-
+		model.addAttribute("pathList", pathListForExam);
 		return "examPanel";
 	}
 
