@@ -28,8 +28,9 @@ public class StudentEntry extends BaseEntity {
 
 	@Column(name = "last_name")
 	private String lastName;
-	@Column(name = "group")
-	private String group;
+
+	@Column(name = "group_number")
+	private Integer groupNumber;
 
 	@Column(name = "done")
 	private Boolean done;

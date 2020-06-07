@@ -170,6 +170,7 @@ public class ApplicationController {
 			ExamDto exam = examService.getExamByTitle(title);
 			if (exam.getPassword().equals(password)) {
 				List<ExamPathDto> examPathDtoList = examPathService.getGroupsForExam(exam.getId());
+				Integer groupNumber = (int) Math.random() * (examPathDtoList.size() + 1);
 				StudentEntry newStudent = StudentEntry.builder()
 						.exam(exam.toEntity())
 						.done(false)
@@ -178,8 +179,9 @@ public class ApplicationController {
 						.firstName(firstName)
 						.index(index)
 						.lastName(lastName)
-						.group(Double.toString(Math.random() * (examPathDtoList.size() - 0 + 1) + 0))
+						.groupNumber(groupNumber)
 						.build();
+				studentEntryService.addNewStudent(newStudent);
 				//TODO check if it exists (student)
 				redirectAttributes.addFlashAttribute("student", newStudent);
 				redirectAttributes.addFlashAttribute("exam", exam);
@@ -192,9 +194,12 @@ public class ApplicationController {
 	}
 
 	@GetMapping(value = "/studentExamView")
-	public String showStudentExamView(StudentEntry student, ExamDto exam) {
-		System.out.println(student.getIndex());
-		System.out.println(exam.getId());
+	public String showStudentExamView(@ModelAttribute("student") StudentEntry student, @ModelAttribute("exam") ExamDto exam, Model model) {
+		model.addAttribute("student", student);
+		model.addAttribute("exam", exam);
+		List<ExamPathDto> examPath = examPathService.getGroupsForExam(exam.getId());
+		String exercisePath = examPath.get(student.getGroupNumber()).getPath();
+		model.addAttribute("exercisePath", exercisePath);
 		return "studentExamView";
 	}
 

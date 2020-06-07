@@ -9,4 +9,6 @@ public interface StudentEntryService {
 	List<StudentEntry> findAll();
 
 	List<StudentEntry> findByExamId(Exam exam);
+
+	void addNewStudent(StudentEntry studentEntry);
 }

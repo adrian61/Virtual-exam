@@ -91,7 +91,7 @@
                                         <td th:text="${participant.getFirstName()} + ' ' + ${participant.getLastName()}">
                                         </td>
                                         <td>10:21:57</td>
-                                        <td th:text="'Gr. '+${participant.getGroup()}"></td>
+                                        <td th:text="'Gr. '+${participant.getGroupNumber()}"></td>
                                         <td class="table-checkmark">
                                             <div th:if="${participant.getDone()} == true">
                                                 <img src="images/icons/checkmark-green.png" class="checkmark-icon">

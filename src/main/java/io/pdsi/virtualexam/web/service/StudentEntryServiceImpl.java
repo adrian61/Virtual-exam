@@ -22,4 +22,9 @@ public class StudentEntryServiceImpl implements StudentEntryService {
 	public List<StudentEntry> findByExamId(Exam exam) {
 		return studentEntryRepository.findAllByExam(exam);
 	}
+
+	@Override
+	public void addNewStudent(StudentEntry studentEntry) {
+		studentEntryRepository.save(studentEntry);
+	}
 }
