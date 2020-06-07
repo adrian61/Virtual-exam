@@ -8,7 +8,6 @@
 <script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
 
 
-
 <body>
 
 <div class="container-fluid main-margin">
@@ -34,8 +33,11 @@
                 <div th:insert="fragments/examCreatorModal.html"></div>
             </div>
             <div class="row">
-                <button id="btn-join" class="btn btn-lg btn-success btn-shadow"><i class="fas fa-user-plus">
-                </i><span> Join exam</span>
+                <button id="btn-join" class="btn btn-lg btn-success btn-shadow" data-toggle="modal"
+                        data-target="#examJoinModal">
+                    <i class="fas fa-user-plus"></i>
+                    <span> Join exam</span>
+                    <div th:insert="fragments/examJoinModal.html"></div>
                 </button>
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
@@ -103,7 +105,8 @@
                         </div>
                     </form>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#modalRegisterForm">New around here? Sign up</a>
+                    <a class="dropdown-item" href="" data-toggle="modal" data-target="#modalRegisterForm">New around
+                        here? Sign up</a>
                     <a class="dropdown-item" href="#">Forgot password?</a>
                 </div>
                 <div sec:authorize="isAuthenticated()">
@@ -140,7 +143,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="text" name="password_B" placeholder="Repeat your password" class="form-control">
+                            <input type="text" name="password_B" placeholder="Repeat your password"
+                                   class="form-control">
                         </div>
                         <div style="margin-bottom:25px" class="input-group">
                             <div class="input-group-prepend">
@@ -152,7 +156,8 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="far fa-user"></i></span>
                             </div>
-                            <input type="text" name="surname" placeholder="Your surname (optional)" class="form-control">
+                            <input type="text" name="surname" placeholder="Your surname (optional)"
+                                   class="form-control">
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-center">

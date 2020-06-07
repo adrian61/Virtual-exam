@@ -1,0 +1,87 @@
+<div class="modal fade" id="examJoinModal" data-keyboard="false" tabindex="-1" role="dialog"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Exam creator</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="examCreatorForm" method="post" th:action="@{/joinExam}" enctype="multipart/form-data">
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-4 col-form-label">Title</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">Password</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password"
+                                   placeholder="Leave empty for no password" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">Index</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="index" name="index">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">First Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="firstName" name="firstName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="password" class="col-sm-4 col-form-label">Second Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="secondName" name="secondName">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" form="examCreatorForm">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        function clamp(num, min, max) {
+            return num <= min ? min : num >= max ? max : num;
+        }
+
+        function refreshView() {
+            $("#files-for-groups").empty();
+            var n = $("#numberOfGroups").val();
+            var groups = clamp(n, 1, 10);
+            for(var i = 0; i < groups; i++) {
+                var html = '<div class="row file-row">';
+                html += '<label for="file' + i + '" class="col-sm-4 col-form-label">Files group ' + (i + 1) + '</label>';
+                html += '<div class="col-sm-8">';
+                html += '<input type="file" name="file" id="file' + (i + 1) + '" class="form-control">';
+                html += '</div></div>';
+                $("#files-for-groups").append(html);
+            }
+        }
+
+        refreshView();
+
+        function showModalHandler() {
+            $('#title').trigger('focus');
+        }
+
+        $('#createColloquiumModal').on('shown.bs.modal', showModalHandler);
+
+        $("#numberOfGroups").on("change paste keyup", refreshView);
+
+    });
+</script>
