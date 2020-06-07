@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -170,7 +171,7 @@ public class ApplicationController {
 			ExamDto exam = examService.getExamByTitle(title);
 			if (exam.getPassword().equals(password)) {
 				List<ExamPathDto> examPathDtoList = examPathService.getGroupsForExam(exam.getId());
-				Integer groupNumber = (int) Math.random() * (examPathDtoList.size() + 1);
+				Integer groupNumber = ThreadLocalRandom.current().nextInt(1, examPathDtoList.size() + 1);
 				StudentEntry newStudent = StudentEntry.builder()
 						.exam(exam.toEntity())
 						.done(false)
@@ -198,6 +199,7 @@ public class ApplicationController {
 		model.addAttribute("student", student);
 		model.addAttribute("exam", exam);
 		List<ExamPathDto> examPath = examPathService.getGroupsForExam(exam.getId());
+		System.out.println("group" + student.getGroupNumber());
 		String exercisePath = examPath.get(student.getGroupNumber()).getPath();
 		model.addAttribute("exercisePath", exercisePath);
 		return "studentExamView";
