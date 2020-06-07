@@ -192,7 +192,7 @@ public class ApplicationController {
 	}
 
 	@GetMapping(value = "/studentExamView")
-	public String showStudentExamView(StudentEntry student, Exam exam) {
+	public String showStudentExamView(StudentEntry student, ExamDto exam) {
 		System.out.println(student.getIndex());
 		System.out.println(exam.getId());
 		return "studentExamView";
