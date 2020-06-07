@@ -37,8 +37,8 @@
                         data-target="#examJoinModal">
                     <i class="fas fa-user-plus"></i>
                     <span> Join exam</span>
-                    <div th:insert="fragments/examJoinModal.html"></div>
                 </button>
+                    <div th:insert="fragments/examJoinModal.html"></div>
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
                 <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">
