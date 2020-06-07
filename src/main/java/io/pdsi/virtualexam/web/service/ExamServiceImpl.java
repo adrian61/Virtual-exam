@@ -38,6 +38,11 @@ public class ExamServiceImpl implements ExamService {
 	}
 
 	@Override
+	public ExamDto getExamByTitle(String title) {
+		return ExamDto.fromEntity(examRepository.findByTitle(title));
+	}
+
+	@Override
 	public Exam getExamByExaminerAndTitle(Examiner examiner, String title) {
 		return examRepository.findByExaminerIdAndTitle(examiner, title);
 	}

@@ -14,4 +14,5 @@ public interface ExamRepository extends JpaRepository<Exam, Integer> {
 
 	Exam findByExaminerIdAndTitle(Examiner examiner, String title);
 
+	Exam findByTitle(String title);
 }

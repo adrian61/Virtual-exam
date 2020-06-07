@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="examCreatorForm" method="post" th:action="@{/joinExam}" enctype="multipart/form-data">
+                <form id="joinExamForm" method="post" th:action="@{/joinExam}">
                     <div class="form-group row">
                         <label for="title" class="col-sm-4 col-form-label">Title</label>
                         <div class="col-sm-8">
@@ -45,7 +45,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary" form="examCreatorForm">Submit</button>
+                <button type="submit" class="btn btn-primary" form="joinExamForm">Submit</button>
             </div>
         </div>
     </div>

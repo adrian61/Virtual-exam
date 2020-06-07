@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +40,7 @@ public class ApplicationController {
 	private final FileStorageService fileStorageService;
 	private final ExamPathService examPathService;
 	private final StudentEntryService studentEntryService;
+	private static final String redirectToMainPage = "redirect:/";
 
 
 	@GetMapping(value = "/")
@@ -78,7 +80,7 @@ public class ApplicationController {
 	                                   @RequestParam("startDate") String startDate,
 	                                   @RequestParam("endDate") String endDate,
 	                                   HttpServletRequest request) {
-		if (userDetails.getUsername() == null) return "redirect:/";
+		if (userDetails.getUsername() == null) return redirectToMainPage;
 		LocalDateTime localStartDate = LocalDateTime.parse(startDate);
 		ZonedDateTime zonedStartDate = localStartDate.atZone(ZoneId.of("GMT+00:00"));
 		LocalDateTime localEndDate = LocalDateTime.parse(endDate);
@@ -99,19 +101,13 @@ public class ApplicationController {
 			examPathService.saveGroups(examByExaminerAndTitle.getId(), paths);
 		} catch (NullPointerException e) {
 			log.error("User not found");
-			return "redirect:/";
+			return redirectToMainPage;
 		} catch (DataAccessException e) {
 			log.error(e.getLocalizedMessage());
-			return "redirect:/";
+			return redirectToMainPage;
 		}
 
-		return "redirect:/";
-	}
-
-	//TODO Added temporarily
-	@GetMapping(value = "/studentExamView")
-	public String showStudentExamView() {
-		return "studentExamView";
+		return redirectToMainPage;
 	}
 
 	public String uploadFile(@RequestParam("file") MultipartFile file) {
@@ -143,9 +139,9 @@ public class ApplicationController {
 	//TODO Added temporarily
 	@PostMapping(value = "/examPanel")
 	public String showTeacherPanel(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute("exam") ExamDto exam, Model model) {
-		if (exam == null || userDetails == null) return "redirect:/";
+		if (exam == null || userDetails == null) return redirectToMainPage;
 		ExamDto examDto = ExamDto.fromEntity(examService.getExam(exam.getId()));
-		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return "redirect:/";
+		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return redirectToMainPage;
 		List<ExamPathDto> pathListForExam = examPathService.getGroupsForExam(exam.getId());
 		List<StudentEntry> participantList = studentEntryService.findByExamId(exam.toEntity());
 		model.addAttribute("exam", examDto);
@@ -164,20 +160,47 @@ public class ApplicationController {
 
 	@PostMapping(value = "/joinExam")
 	public String joinExam(
-	                        @RequestParam("title") String title,
-	                        @RequestParam("password") String password,
-	                        @RequestParam("index") Integer index,
-	                        @RequestParam("firstName") String firstName,
-	                        @RequestParam("lastName") String lastName
-	){
+			@RequestParam("title") String title,
+			@RequestParam("password") String password,
+			@RequestParam("index") Integer index,
+			@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName,
+			RedirectAttributes redirectAttributes) {
+		try {
+			ExamDto exam = examService.getExamByTitle(title);
+			if (exam.getPassword().equals(password)) {
+				List<ExamPathDto> examPathDtoList = examPathService.getGroupsForExam(exam.getId());
+				StudentEntry newStudent = StudentEntry.builder()
+						.exam(exam.toEntity())
+						.done(false)
+						.extraTime(0)
+						.finishDate(exam.getEndDate())
+						.firstName(firstName)
+						.index(index)
+						.lastName(lastName)
+						.group(Double.toString(Math.random() * (examPathDtoList.size() - 0 + 1) + 0))
+						.build();
+				//TODO check if it exists (student)
+				redirectAttributes.addFlashAttribute("student", newStudent);
+				redirectAttributes.addFlashAttribute("exam", exam);
+				return "redirect:/studentExamView";
+			} else return redirectToMainPage;
+		} catch (NullPointerException e) {
+			log.error(e.toString());
+		}
+		return redirectToMainPage;
+	}
 
+	@GetMapping(value = "/studentExamView")
+	public String showStudentExamView(StudentEntry student, Exam exam) {
+		System.out.println(student.getIndex());
+		System.out.println(exam.getId());
 		return "studentExamView";
 	}
 
-
 	@GetMapping(value = "/logout")
 	public String logoutPage() {
-		return "redirect:index";
+		return redirectToMainPage;
 	}
 
 	@GetMapping("/access_denied")
