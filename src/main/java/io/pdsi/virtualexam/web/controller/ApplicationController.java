@@ -162,6 +162,18 @@ public class ApplicationController {
 		return "examPanel";
 	}
 
+	@PostMapping(value = "/joinExam")
+	public String joinExam(
+	                        @RequestParam("title") String title,
+	                        @RequestParam("password") String password,
+	                        @RequestParam("index") Integer index,
+	                        @RequestParam("firstName") String firstName,
+	                        @RequestParam("lastName") String lastName
+	){
+
+		return "studentExamView";
+	}
+
 
 	@GetMapping(value = "/logout")
 	public String logoutPage() {
