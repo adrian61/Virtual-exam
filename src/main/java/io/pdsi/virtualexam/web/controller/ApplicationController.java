@@ -13,6 +13,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -215,4 +216,22 @@ public class ApplicationController {
 		return "accessDenied";
 	}
 
+	@GetMapping(value = "/time-left")
+	public String getTimeLeft(@RequestParam("title") String title, ModelMap map) {
+		ExamDto examDto = examService.getExamByTitle(title);
+		Duration duration = Duration.between(examDto.getEndDate(), ZonedDateTime.now());
+		long seconds = Math.abs(duration.getSeconds());
+		map.addAttribute("timeLeft", String.format(
+				"%d:%02d:%02d",
+				seconds / 3600,
+				(seconds % 3600) / 60,
+				seconds % 60));
+		return "examPanel :: #time-left";
+	}
+
+	//TODO temporarily
+	@GetMapping(value = "/test")
+	public String showTestWebSocket() {
+		return "test";
+	}
 }
