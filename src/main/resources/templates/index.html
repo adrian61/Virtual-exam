@@ -26,7 +26,7 @@
     <div class="row justify-content-end">
         <div class="col-lg-3 actions">
             <div class="row center-block">
-                <button class="btn btn-lg btn-light flat-bottom btn-shadow" id="createExamButton" data-toggle="modal"
+                <button class="btn btn-lg btn-light flat-bottom btn-shadow equal-length" id="createExamButton" data-toggle="modal"
                         data-target="#createColloquiumModal">
                     <i class="fas fa-plus-circle"></i><span> New exam</span>
                 </button>
@@ -41,7 +41,7 @@
                     <div th:insert="fragments/examJoinModal.html"></div>
             </div>
             <div class="row center-block" sec:authorize="isAuthenticated()">
-                <button class="btn btn-lg btn-light flat-top btn-shadow" id="last-btn">
+                <button class="btn btn-lg btn-light flat-top btn-shadow equal-length" id="last-btn">
                     </i><span th:text="${closestExamTime} +' '+ ${closestExamTitle}"> </span>
                 </button>
             </div>
@@ -180,6 +180,8 @@
     }
 }
 </script>
+
+<script type="text/javascript" src="/js/equalLength.js"></script>
 </body>
 
 </html>
