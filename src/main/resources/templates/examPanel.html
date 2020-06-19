@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:include="fragments/meta.html"></head>
 <head>
     <title>Exam panel</title>
@@ -35,19 +36,6 @@
                         </div>
                         <div class="row center-block horizontal-line"></div>
                         <div class="row">
-                            <div class="center-block" style="line-height: 120px">
-                                <div class="row">
-                                    <div class="col-md-auto">
-                                        <span class="link-left-text">Link to the exam:</span>
-                                    </div>
-                                    <div class="col">
-                                        <div class="link" id="link">km.me/zpo-123xfct</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row center-block horizontal-line"></div>
-                        <div class="row">
                             <div class="center-block" style="line-height: 80px">
                                 <span id="time-left"
                                       th:text="'Time left: ' + ${timeLeft}"></span>
@@ -68,7 +56,7 @@
                             </div>
                             <div class="row">
                                 <div class="center-block task-content">
-                                    <button type="button"><a th:href="${path.getPath()}">Button Text</a></button>
+                                    <a class="btn btn-secondary" th:href="${path.getPath()}">Download</a>
                                 </div>
                             </div>
                         </div>

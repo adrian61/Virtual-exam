@@ -220,7 +220,7 @@ public class ApplicationController {
 	public String getTimeLeft(@RequestParam("title") String title, ModelMap map) {
 		ExamDto examDto = examService.getExamByTitle(title);
 		Duration duration = Duration.between(examDto.getEndDate(), ZonedDateTime.now());
-		long seconds = Math.abs(duration.getSeconds());
+		long seconds = duration.getSeconds() < 0 ? Math.abs(duration.getSeconds()) : 0;	// No timer for finished exams
 		map.addAttribute("timeLeft", String.format(
 				"%d:%02d:%02d",
 				seconds / 3600,
