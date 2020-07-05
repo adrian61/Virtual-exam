@@ -143,7 +143,6 @@ public class ApplicationController {
 	public String showTeacherPanel(@AuthenticationPrincipal UserDetails userDetails, @ModelAttribute("exam") ExamDto exam, Model model) {
 		if (exam == null || userDetails == null) return redirectToMainPage;
 		ExamDto examDto = ExamDto.fromEntity(examService.getExam(exam.getId()));
-		if (Duration.between(examDto.getEndDate(), ZonedDateTime.now()).isNegative()) return redirectToMainPage;
 		List<ExamPathDto> pathListForExam = examPathService.getGroupsForExam(exam.getId());
 		List<StudentEntry> participantList = studentEntryService.findByExamId(exam.toEntity());
 		model.addAttribute("exam", examDto);
