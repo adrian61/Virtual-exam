@@ -51,10 +51,8 @@
                 <div class="row left-panel">
                     <div class="col">
                         <div th:each="path : ${pathList}">
-                            <div class="row">
+                            <div class="col">
                                 <span class="ml-3 mt-2" th:text="'Group '+ ${path.getGroupId()}"></span>
-                            </div>
-                            <div class="row">
                                 <div class="center-block task-content">
                                     <a class="btn btn-secondary" th:href="${path.getPath()}">Download</a>
                                 </div>

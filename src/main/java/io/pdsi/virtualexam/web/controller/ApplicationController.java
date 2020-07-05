@@ -202,6 +202,13 @@ public class ApplicationController {
 		System.out.println("group" + student.getGroupNumber());
 		String exercisePath = examPath.get(student.getGroupNumber()).getPath();
 		model.addAttribute("exercisePath", exercisePath);
+		Duration duration = Duration.between(exam.getEndDate(), ZonedDateTime.now());
+		long seconds = duration.getSeconds() < 0 ? Math.abs(duration.getSeconds()) : 0;    // No timer for finished exams
+		model.addAttribute("timeLeft", String.format(
+				"%d:%02d:%02d",
+				seconds / 3600,
+				(seconds % 3600) / 60,
+				seconds % 60));
 		return "studentExamView";
 	}
 
