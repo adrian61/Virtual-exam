@@ -30,13 +30,17 @@
                     <div class="form-group row">
                         <label for="startDate" class="col-sm-4 col-form-label">Begin date</label>
                         <div class="col-sm-8">
-                            <input type="datetime-local" class="form-control" id="startDate" name="startDate" placeholder="HH:MM">
+                            <input type="datetime-local" class="form-control" id="startDate" name="startDate" style="visibility:hidden;">
+                            <input type="date" class="form-control" id="startD" name="startD" placeholder="YYYY-MM-DD">
+                            <input type="time" class="form-control" id="startT" name="startT" placeholder="HH:MM">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="endDate" class="col-sm-4 col-form-label">End date</label>
                         <div class="col-sm-8">
-                            <input type="datetime-local" class="form-control" id="endDate" name="endDate" placeholder="HH:MM">
+                            <input type="datetime-local" class="form-control" id="endDate" name="endDate" placeholder="HH:MM" style="visibility:hidden;">
+                            <input type="date" class="form-control" id="endD" name="endD" placeholder="YYYY-MM-DD">
+                            <input type="time" class="form-control" id="endT" name="endT" placeholder="HH:MM">
                         </div>
                     </div>
                     <div id="files-for-groups" class="form-group file-group">
@@ -82,7 +86,29 @@
 
         $('#createColloquiumModal').on('shown.bs.modal', showModalHandler);
 
-        $("#numberOfGroups").on("change paste keyup", refreshView);
+        $("#numberOfGroups").on("change", refreshView);
+
+        function datetimelocalFixStart() {
+            if($('#startD').val() && $('#startT').val()) {
+                var datetime = document.getElementById("startD").value + "T" + document.getElementById("startT").value;
+                $("#startDate").val(datetime);
+            }
+        }
+
+        function datetimelocalFixEnd() {
+            if($('#endD').val() && $('#endT').val()) {
+                var datetime = document.getElementById("endD").value + "T" + document.getElementById("endT").value;
+                $("#endDate").val(datetime);
+            }
+        }
+
+        $("#startT").on("change", datetimelocalFixStart);
+
+        $("#startD").on("change", datetimelocalFixStart);
+
+        $("#endT").on("change", datetimelocalFixEnd);
+
+        $("#endD").on("change", datetimelocalFixEnd);
 
     });
 </script>
