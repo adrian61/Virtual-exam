@@ -21,6 +21,8 @@ Project is created with:
 
 	
 ## Setup
+Install DB from db.sql
+
 To run this project set your environment variables on your system:
 
 DB_URL=url/database
